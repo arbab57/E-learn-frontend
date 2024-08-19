@@ -1,12 +1,23 @@
-import { createHashRouter, RouterProvider } from 'react-router-dom'
-import Header from './components/Header'
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
+import Mainlayout from './layouts/mainlayout'
+import MainPage from './pages/mainPage'
 
 function App() {
 
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <>
+        <Route path="/" element={<Mainlayout />}>
+          <Route index element={<MainPage />} />
+        </Route>
+      </>
+    )
+  )
+
   return (
-    <>
-    <Header />
-    </>
+
+    <RouterProvider router={router} />
+
   )
 }
 
