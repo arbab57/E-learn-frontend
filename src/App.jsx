@@ -1,6 +1,7 @@
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
-import Mainlayout from './layouts/mainlayout'
+
 import MainPage from './pages/mainPage'
+import Mainlayout from './layouts/mainlayout'
 
 function App() {
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 // URL = import.meta.env.VITE_URL
-import { FaSearch } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { FaSearch } from 'react-icons/fa';
 
 
 function Header() {
@@ -23,16 +23,19 @@ function Header() {
         <div className="name font-bold">Learnify</div>
       </div>
       <ul className="flex gap-5">
-        <li><link to="">Home</link></li>
-        <li><link to="">Courses</link></li>
-        <li><link to="">Contact Us</link></li>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/courses">Courses</Link></li>
+        <li><Link to="/contact">Contact Us</Link></li>
       </ul>
       {
-        res === 200 ? <div className="registeration flex">
-          <li><link to="Login">Login /</link></li>
-          <li><link to="Register">Register</link></li>
-        </div> : <FaSearch className='text-[#0DAFE6] text-xl' />
-
+        res === 200 ? (
+          <div className="registeration flex">
+            <li><Link to="/login">Login /</Link></li>
+            <li><Link to="/register">Register</Link></li>
+          </div>
+        ) : (
+          <FaSearch className='text-[#0DAFE6] text-xl' />
+        )
       }
     </div>
   )
