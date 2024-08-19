@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom"
 import React from 'react'
 
 function Header() {
@@ -6,7 +5,7 @@ function Header() {
     <div className='head flex justify-around mt-2'>
         <div className="logo">
             <img src="" alt="" />
-            <div className="name">Learnify</div>
+            <div className="name font-bold">Learnify</div>
         </div>
         <ul className="flex gap-5">
             <li>Home</li>
