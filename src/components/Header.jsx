@@ -17,10 +17,10 @@ function Header() {
   // }, [])
 
   return (
-    <div className='head flex justify-around mt-2'>
+    <div className='head flex justify-around mt-2 my-2'>
       <div className="logo">
         <img src="" alt="" />
-        <div className="name font-bold">Learnify</div>
+        <div className="name font-bold cursor-pointer">Learnify</div>
       </div>
       <ul className="flex gap-5">
         <li><Link to="/">Home</Link></li>
@@ -34,7 +34,7 @@ function Header() {
             <li><Link to="/register">Register</Link></li>
           </div>
         ) : (
-          <FaSearch className='text-[#0DAFE6] text-xl' />
+          <FaSearch className='text-[#0DAFE6] text-xl cursor-pointer' />
         )
       }
     </div>
