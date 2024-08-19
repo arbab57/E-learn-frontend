@@ -1,6 +1,6 @@
 import React from 'react'
-import Header from '../components/Header'
 import Intro from '../components/Intro'
+import Categories from '../components/Categories'
 
 
 
@@ -8,6 +8,7 @@ const mainPage = () => {
   return (
     <div className="">
         <Intro/>
+        <Categories/>
     </div>
   )
 }
