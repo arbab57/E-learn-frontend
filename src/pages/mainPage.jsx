@@ -3,6 +3,7 @@ import Intro from '../components/Intro'
 import Categories from '../components/Categories'
 import FeaturedCourses from '../components/featuredCourses'
 import Info from '../components/Info'
+import Buycourse from '../components/Buycourse'
 
 
 
@@ -13,6 +14,7 @@ const mainPage = () => {
       <Categories />
       <FeaturedCourses />
       <Info />
+      <Buycourse />
     </div>
   )
 }
