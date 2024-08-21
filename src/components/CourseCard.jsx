@@ -7,9 +7,6 @@ const CourseCard = ({ name, provider, duration, rating, price, image }) => {
         className="h-48 bg-cover bg-center"
         style={{ backgroundImage: `url(${image})` }}
       >
-        <span className="absolute top-3 left-3 bg-red-500 text-white px-3 py-1 text-xs rounded-full">
-          Photography
-        </span>
       </div>
       <div className="p-4">
         <h3 className="text-lg font-semibold text-gray-800">{name}</h3>
