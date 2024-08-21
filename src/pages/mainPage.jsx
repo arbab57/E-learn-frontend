@@ -4,7 +4,7 @@ import Categories from '../components/Categories'
 import FeaturedCourses from '../components/featuredCourses'
 import Info from '../components/Info'
 import Buycourse from '../components/Buycourse'
-
+import Login from '../components/Login'
 
 
 const mainPage = () => {
@@ -15,8 +15,9 @@ const mainPage = () => {
       <FeaturedCourses />
       <Info />
       <Buycourse />
+
     </div>
   )
 }
 
-export default mainPage
+export default mainPage;
