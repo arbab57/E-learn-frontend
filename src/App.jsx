@@ -3,6 +3,7 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 import MainPage from './pages/mainPage'
 import Mainlayout from './layouts/mainlayout'
 
+
 function App() {
 
   const router = createBrowserRouter(
@@ -18,6 +19,7 @@ function App() {
   return (
 
     <RouterProvider router={router} />
+
 
   )
 }

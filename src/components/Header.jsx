@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-// URL = import.meta.env.VITE_URL
+const URL = import.meta.env.VITE_URL
 import { Link } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 
@@ -8,13 +8,13 @@ function Header() {
 
   const [res, setRes] = useState(null)
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const response = await fetch(`${URL}/check`)
-  //     setRes(response.status)
-  //   }
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(`${URL}/check`)
+      setRes(response.status)
+    }
 
-  // }, [])
+  }, [])
 
   return (
     <div className='head py-2 bg-[#0DAFE6] flex justify-around mb-2'>
