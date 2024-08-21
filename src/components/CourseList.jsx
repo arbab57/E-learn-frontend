@@ -223,7 +223,6 @@ const CoursesList = () => {
         placeholder="Search"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        // className="w-full p-3 mb-6 border border-gray-300 rounded-md"
       />
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 container mx-4 ">
         {filteredCourses.map((course, index) => (
