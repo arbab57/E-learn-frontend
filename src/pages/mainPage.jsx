@@ -3,6 +3,7 @@ import Intro from '../components/Intro'
 import Categories from '../components/Categories'
 import FeaturedCourses from '../components/featuredCourses'
 import Login from '../components/Login'
+import Register from '../components/Register'
 
 
 const mainPage = () => {
@@ -11,8 +12,8 @@ const mainPage = () => {
         <Intro/>
         <Categories/>
         <FeaturedCourses/>
-<Login/>
-
+        <Login/>
+<Register/>
     </div>
   )
 }
