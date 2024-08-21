@@ -5,6 +5,7 @@ import FeaturedCourses from '../components/featuredCourses'
 import Info from '../components/Info'
 import Buycourse from '../components/Buycourse'
 import Login from '../components/Login'
+import Register from '../components/Register'
 
 
 const mainPage = () => {
