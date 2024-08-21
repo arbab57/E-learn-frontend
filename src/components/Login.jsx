@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useRef } from "react";
+import useClickOutside from "../Hooks/UseClickOutside";
 
-const Login = () => {
+const Login = ({setShowLogin}) => {
+
+    const boxRef = useRef(null)
+    useClickOutside (boxRef, () => setShowLogin(false))
     return (
         <>
-            <div className="flex flex-col justify-center h-screen">
-                <div className="w-full max-w-md mx-auto p-4 bg-white rounded shadow-md">
+           <div  className="bg-black bg-opacity-45 w-screen fixed top-0 left-0 flex flex-col justify-center h-screen">
+                <div ref={boxRef} className="w-full max-w-md mx-auto p-4 bg-white rounded shadow-md">
                     <div className="flex justify-start mb-4">
                         <b className="text-2xl">Login</b>
                     </div>
@@ -22,7 +26,6 @@ const Login = () => {
                             placeholder="Password*"
                             required
                             className="w-full p-2 outline-none  text-sm text-gray-700 mt-5 border border-white border-b-2 border-b-black"
-
                         />
                     </div>
                     <div className="flex justify-start mt-8">
@@ -32,10 +35,7 @@ const Login = () => {
                             id="user"
                             className="w-4 h-4 text-gray-700 "
                         />
-                        <label
-                            className="ml-2 text-sm text-gray-700"
-                            htmlFor="user"
-                        >
+                        <label className="ml-2 text-sm text-gray-700" htmlFor="user">
                             Remember me
                         </label>
                     </div>
