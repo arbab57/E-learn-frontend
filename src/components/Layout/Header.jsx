@@ -10,10 +10,10 @@ function Header() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`${URL}/auth/check`)
+      const response = await fetch(`${URL}/check`)
       setRes(response.status)
     }
-    fetchData()
+
   }, [])
 
   return (
