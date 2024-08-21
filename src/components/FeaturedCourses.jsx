@@ -15,9 +15,6 @@ const FeaturedCourses = () => {
                 </div>
                 <div className="flex flex-wrap gap-8 justify-center">
                  <FeatureCard/>
-                 <FeatureCard/>
-                 <FeatureCard/>
-                 <FeatureCard/>
                 </div>
             </div>
         </div>
