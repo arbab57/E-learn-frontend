@@ -21,8 +21,6 @@ const Buycourse = () => {
                     <button className='text-left mt-6 bg-[#0DAFE6] text-white p-3 rounded-3xl active:bg-white active:text-[#0DAFE6]'>Buy Course Now</button>
             </div>
         </div>
-
-
     )
 }
 
