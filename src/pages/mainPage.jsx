@@ -14,7 +14,6 @@ const mainPage = () => {
       <FeaturedCourses />
       <Info />
       <Buycourse />
-      <ReviewSection />
     </div>
   );
 };

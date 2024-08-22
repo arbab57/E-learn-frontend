@@ -1,8 +1,8 @@
-export const WebHandler = async (url, verb, params, headers) => {
+export const WebHandler = async (url, verb, params) => {
     try {
         let options = {
             method: verb,
-            headers: headers,
+            headers: {'Content-Type': "application/json"},
             body: params,
             credentials: 'include',
         }

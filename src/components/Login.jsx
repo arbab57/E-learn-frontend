@@ -16,11 +16,8 @@ const Login = ({ setShowLogin }) => {
         const obj = Object.fromEntries(formData.entries());
         try {
             setLoading(true)
-            const headers = {
-                'Content-Type': "application/json"
-            }
             const body = JSON.stringify(obj);
-            const response = await WebHandler(URLS.LOGIN, 'POST', body, headers,)
+            const response = await WebHandler(URLS.LOGIN, 'POST', body)
             if (response.status === 200) {
                 setShowLogin(false)
                 setLoading(false)
