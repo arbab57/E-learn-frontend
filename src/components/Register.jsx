@@ -1,9 +1,11 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import useClickOutside from "../Hooks/UseClickOutside";
+import Loader from "./Loader";
 
 const Register = ({ setShowRegister }) => {
   const boxRef = useRef(null);
   useClickOutside(boxRef, () => setShowRegister(false));
+  const [loader, setLoader] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -12,6 +14,7 @@ const Register = ({ setShowRegister }) => {
     console.log(obj);
 
     try {
+      setLoader(true)
       const response = await fetch('https://elearningportal-56538109f664.herokuapp.com/auth/register ', {
         method: 'POST',
         headers: {
@@ -21,7 +24,7 @@ const Register = ({ setShowRegister }) => {
       });
 
       const result = response.status;
-      console.log('Response from API:', result);
+      setLoader(false)
     } catch (error) {
       console.error('Error sending data:', error);
     }
@@ -29,6 +32,7 @@ const Register = ({ setShowRegister }) => {
 
   return (
     <>
+    {loader && <Loader/>}
       <div className="fixed top-0 left-0 w-screen bg-black bg-opacity-40 flex flex-col justify-center h-screen">
         <form ref={boxRef} onSubmit={handleSubmit} className="w-full max-w-md mx-auto p-8 bg-white rounded shadow-md">
           <div className="flex justify-start mb-4">
@@ -36,18 +40,18 @@ const Register = ({ setShowRegister }) => {
           </div>
           <div>
             <input
-              name="email"
+              name="name"
               type="text"
-              placeholder="Email*"
+              placeholder="Name*"
               required
               className="w-full p-2 outline-none text-sm text-gray-700 mt-5 border border-white border-b-2 border-b-black"
             />
           </div>
           <div>
             <input
-              name="name"
-              type="text"
-              placeholder="Name*"
+              name="email"
+              type="email"
+              placeholder="Email*"
               required
               className="w-full p-2 outline-none text-sm text-gray-700 mt-5 border border-white border-b-2 border-b-black"
             />

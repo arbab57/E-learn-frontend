@@ -10,3 +10,17 @@
     font-weight: 400;
     font-style: normal;
 }
+
+.spinner{
+    animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+    0%{
+        rotate: 0deg;
+    }
+    100%{
+        rotate: 360deg;
+    }
+
+}

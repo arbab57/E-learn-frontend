@@ -1,29 +1,31 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import useClickOutside from "../Hooks/UseClickOutside";
+import Loader from "./Loader";
+import { WebHandler } from "../data/remote/WebHandler";
+import { URLS } from "../data/remote/URL";
 
 const Login = ({ setShowLogin }) => {
-
+    const url = import.meta.env.VITE_URL
     const boxRef = useRef(null)
     useClickOutside(boxRef, () => setShowLogin(false))
+    const [loading, setLoading] = useState(false)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const obj = Object.fromEntries(formData.entries());
-        console.log(obj);
-        console.log(2)
-
         try {
-            const response = await fetch('https://elearningportal-56538109f664.herokuapp.com/auth/login ', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(obj),
-            });
+            setLoading(true)
+            const headers = {
+                'Content-Type': "application/json"
+            }
+            const body = JSON.stringify(obj);
+            const response = await WebHandler(URLS.LOGIN, 'POST', body, headers,)
+            if (response.status === 200) {
+                setShowLogin(false)
+                setLoading(false)
+            }
 
-            const result = response.status;
-            console.log('Response from API:', result);
         } catch (error) {
             console.error('Error sending data:', error);
         }
@@ -31,6 +33,7 @@ const Login = ({ setShowLogin }) => {
 
     return (
         <>
+            {loading && <Loader />}
             <div className="bg-black bg-opacity-45 w-screen fixed top-0 left-0 flex flex-col justify-center h-screen">
                 <form ref={boxRef} onSubmit={handleSubmit} className="w-full max-w-md mx-auto p-8 bg-white rounded shadow-md">
                     <div className="flex justify-start mb-4">
