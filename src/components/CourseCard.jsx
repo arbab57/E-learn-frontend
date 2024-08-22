@@ -1,13 +1,26 @@
 import React from "react";
 
-const CourseCard = ({ name, provider, duration, rating, price, image }) => {
-  // Define the maximum length for the course name
-  const maxLength = 20; // You can adjust this number based on your design
-
-  // Function to truncate the name and add ellipsis if it exceeds the maxLength
+const CourseCard = ({
+  name,
+  provider,
+  duration,
+  rating,
+  price,
+  image,
+  description,
+}) => {
+  const maxLength = 20;
   const truncateName = (name) => {
     if (name.length > maxLength) {
       return name.slice(0, maxLength) + "...";
+    }
+    return name;
+  };
+
+  const maxdescriptionLength = 60;
+  const truncateDescription = (description) => {
+    if (description.length > maxdescriptionLength) {
+      return description.slice(0, maxdescriptionLength) + "...";
     }
     return name;
   };
@@ -27,6 +40,7 @@ const CourseCard = ({ name, provider, duration, rating, price, image }) => {
           <span>{duration}</span>
           <span>{rating} rating</span>
         </div>
+        <span>{truncateDescription(description)}</span>
         <div className="text-lg font-bold text-gray-800 mb-4">
           {price === "Free" ? "Free" : `${price}`}
         </div>
