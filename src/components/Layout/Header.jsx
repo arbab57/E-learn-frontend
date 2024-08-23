@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import logo from "../../assets/images/logo2.jpg"
 import { FaUserGraduate, FaChevronDown } from 'react-icons/fa';
 import DropDown from '../MainPage/DropDown';
-import UserDetails from '../userDetails';
+import Setting from '../Setting';
 
 
 
@@ -56,7 +56,7 @@ function Header() {
         </div>
         {showDropDown && <DropDown setShowDetails={setShowDetails} setShowDropDown={setShowDropDown} />}
       </div>
-      {showDetails && <UserDetails setShowDetails={setShowDetails}/>}
+      {showDetails && <Setting setShowDetails={setShowDetails}/>}
     </div>
   )
 }

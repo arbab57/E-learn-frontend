@@ -2,7 +2,7 @@ import {React, useRef} from 'react'
 import useClickOutside from '../Hooks/UseClickOutside'
 
 
-const UserDetails = ({setShowDetails}) => {
+const Setting = ({setShowDetails}) => {
     const modalRef = useRef(null)
     const onClose = () => {
         setShowDetails(false)
@@ -18,4 +18,4 @@ const UserDetails = ({setShowDetails}) => {
     )
 }
 
-export default UserDetails
+export default Setting
