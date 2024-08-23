@@ -49,6 +49,7 @@ const CourseCard = ({
         </button>
       </div>
     </div>
+    
   );
 };
 
