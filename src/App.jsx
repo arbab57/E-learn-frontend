@@ -2,7 +2,9 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 
 import MainPage from './pages/mainPage'
 import Mainlayout from './layouts/mainlayout'
-import Login from './pages/Login'
+import Login from './pages/Login'// In your index.js or App.js
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 
 function App() {

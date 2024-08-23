@@ -9,6 +9,7 @@ const CourseCard = ({
   image,
   description,
 }) => {
+
   const maxLength = 20;
   const truncateName = (name) => {
     if (name.length > maxLength) {

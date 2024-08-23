@@ -13,6 +13,8 @@ const mainPage = () => {
       <FeaturedCourses />
       <Info />
       <Buycourse />
+  
+     
     </div>
   );
 };
