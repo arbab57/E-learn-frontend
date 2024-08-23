@@ -2,6 +2,7 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 
 import MainPage from './pages/mainPage'
 import Mainlayout from './layouts/mainlayout'
+import Login from './pages/Login'
 
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
+      <Route path='/login' element={<Login/>}/>
         <Route path="/" element={<Mainlayout />}>
           <Route index element={<MainPage />} />
         </Route>

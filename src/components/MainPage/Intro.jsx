@@ -1,5 +1,5 @@
 import React from "react";
-import introImg from "../assets/images/intro.png";
+import introImg from "../../assets/images/intro.png";
 import { Navigate, useNavigate } from "react-router-dom";
 
 
@@ -18,7 +18,7 @@ const Intro = () => {
                     Find Course
                 </button>
             </div>
-            <img src={introImg} alt="" srcset="" />
+            <img src={introImg} alt=""  />
         </div>
     );
 };

@@ -11,16 +11,34 @@
     font-style: normal;
 }
 
-.spinner{
+.spinner {
     animation: spin 1.5s linear infinite;
 }
 
 @keyframes spin {
-    0%{
+    0% {
         rotate: 0deg;
     }
-    100%{
+
+    100% {
         rotate: 360deg;
     }
 
+}
+
+.toast {
+    animation-name: slideinleft;
+    animation-duration: 0.25s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+}
+
+@keyframes slideinleft {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0%);
+    }
 }

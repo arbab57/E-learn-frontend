@@ -1,10 +1,9 @@
 import React from "react";
-import Intro from "../components/Intro";
-import Categories from "../components/Categories";
-import FeaturedCourses from "../components/featuredCourses";
-import Info from "../components/Info";
-import Buycourse from "../components/Buycourse";
-import ReviewSection from "../components/ReviewSection";
+import Intro from "../components/MainPage/Intro";
+import Categories from "../components/MainPage/Categories";
+import FeaturedCourses from "../components/MainPage/FeaturedCourses";
+import Info from "../components/MainPage/Info";
+import Buycourse from "../components/MainPage/Buycourse";
 
 const mainPage = () => {
   return (

@@ -2,7 +2,6 @@ import React from "react";
 import { MdAccessTimeFilled, MdPlayLesson } from "react-icons/md";
 
 const FeatureCard = ({ data }) => {
-    console.log(data);
 
     const truncateTitle = (title, length = 20) => {
         if (title.length > length) {
@@ -18,8 +17,9 @@ const FeatureCard = ({ data }) => {
 
     return (
         <>
-            {data.map((course, index) => (
-                <div
+            {data.map((course, index) => {
+                
+              return ( <div
                     key={index}
                     className="w-[30%] pb-3 h-80 flex flex-col justify-between rounded-lg border-[1px] border-black border-opacity-50 transition hover:scale-105 cursor-pointer hover:shadow-xl shadow-black"
                 >
@@ -64,8 +64,8 @@ const FeatureCard = ({ data }) => {
                             {course.data.details.price}
                         </div>
                     </div>
-                </div>
-            ))}
+                </div>)
+            })}
         </>
     );
 };

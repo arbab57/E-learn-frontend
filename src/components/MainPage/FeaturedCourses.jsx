@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import FeatureCard from "./FeatureCard";
-import { WebHandler } from "../data/remote/WebHandler";
-import { URLS } from "../data/remote/URL";
+import { WebHandler } from "../../data/remote/WebHandler";
+import { URLS } from "../../data/remote/URL";
 const FeaturedCourses = () => {
     const [response, setResponse] = useState([]);
 
@@ -29,9 +29,9 @@ const FeaturedCourses = () => {
                         All Courses
                     </button>
                 </div>
-                <div className="flex flex-wrap gap-8 justify-center">
+                <div className="flex flex-wrap gap-8">
                     {/* { } */}
-                    <FeatureCard data={response} />
+                    <FeatureCard data={response.response} />
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 import React from 'react'
-import Intro from "../assets/images/intro.png"
+import Intro from "../../assets/images/intro.png"
 import { TiTick } from "react-icons/ti";
 
 const Buycourse = () => {

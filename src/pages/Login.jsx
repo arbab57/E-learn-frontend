@@ -1,38 +1,49 @@
-import React, { useRef, useState } from "react";
-import useClickOutside from "../Hooks/UseClickOutside";
-import Loader from "./Loader";
+import React, { useState } from "react";
+import Loader from "../components/General/Loader";
 import { WebHandler } from "../data/remote/WebHandler";
 import { URLS } from "../data/remote/URL";
+import { useNavigate } from "react-router-dom";
+import Toast from "../components/General/Toast";
 
-const Login = ({ setShowLogin }) => {
-    const url = import.meta.env.VITE_URL
-    const boxRef = useRef(null)
-    useClickOutside(boxRef, () => setShowLogin(false))
-    const [loading, setLoading] = useState(false)
+
+const Login = () => {
+    const navigate = useNavigate();
+
+
+    const [showToast, setShowToast] = useState(false)
+    const [res, setres] = useState("")
+    const [loading, setLoading] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const obj = Object.fromEntries(formData.entries());
-        try {
-            setLoading(true)
-            const body = JSON.stringify(obj);
-            const response = await WebHandler(URLS.LOGIN, 'POST', body)
-            if (response.status === 200) {
-                setShowLogin(false)
-                setLoading(false)
-            }
 
+        try {
+            setLoading(true);
+            const body = JSON.stringify(obj);
+            const { response, status } = await WebHandler(URLS.LOGIN, 'POST', body);
+            if (status === 200) {
+                navigate("/");
+                setres(response.message)
+            } else {
+                setShowToast(true)
+                setres(response.message)
+                console.error('Login failed with status:', status);
+            }
         } catch (error) {
             console.error('Error sending data:', error);
+        } finally {
+            setLoading(false);
         }
     };
 
     return (
         <>
+            {showToast && <Toast message={res} onClose={setShowToast}/>}
             {loading && <Loader />}
-            <div className="bg-black bg-opacity-45 w-screen fixed top-0 left-0 flex flex-col justify-center h-screen">
-                <form ref={boxRef} onSubmit={handleSubmit} className="w-full max-w-md mx-auto p-8 bg-white rounded shadow-md">
+            <div className="bg-[#f2f6f8]  w-screen fixed top-0 left-0 flex flex-col justify-center h-screen">
+                <form onSubmit={handleSubmit} className="w-full max-w-md mx-auto p-8 bg-white rounded shadow-md">
                     <div className="flex justify-start mb-4">
                         <b className="text-2xl">Login</b>
                     </div>
@@ -70,7 +81,7 @@ const Login = ({ setShowLogin }) => {
                         type="submit"
                         value="Login"
                     />
-                    <p className="text-sm cursor-pointer text-gray-700 mt-3">Forget Password?</p>
+                    <p className="text-sm cursor-pointer text-gray-700 mt-2">Forget Password?</p>
                 </form>
             </div>
         </>
