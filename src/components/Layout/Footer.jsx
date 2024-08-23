@@ -6,13 +6,7 @@ const Footer = () => {
     <footer className="bg-gray-100 w-full h-1/4 py-4 px-4">
       <div className="container mx-auto flex flex-col lg:flex-row justify-between items-start lg:items-center">
         <div className="mb-4 lg:mb-0 mx-10">
-          <div>
-            
-          </div>
-          <h2 className="text-xl font-bold text-[#0DAFE6]">
-          
-            Learnify
-          </h2>
+          <h2 className="text-xl font-bold text-[#0DAFE6]">Learnify</h2>
           <p className="text-gray-600 mt-2 max-w-xs text-sm">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
