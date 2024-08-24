@@ -6,6 +6,7 @@ import { FaUserGraduate, FaChevronDown } from 'react-icons/fa';
 import DropDown from '../DropDown/DropDown';
 import Setting from '../DropDown/Setting';
 import ChangePassword from '../DropDown/ChangePassword';
+import SavedCourses from '../../pages/SavedCourses';
 
 
 function Header() {
@@ -14,6 +15,7 @@ function Header() {
   const [setting, setSetting] = useState(false)
   const [Password, setPassword] = useState(false)
   const [showDropDown, setShowDropDown] = useState(false)
+  const [savedCourses, setSavedCourses] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,7 +37,7 @@ function Header() {
       {/* {showRegister && <Register setShowRegister={setShowRegister} />} */}
       <div className="logo flex justify-center items-center">
         <img className='w-12 h-12' src={logo} alt="" />
-        <div className="text-[#0DAFE6] font-semibold text-xl cursor-pointer">Learnify</div>
+        <div ><Link className="text-[#0DAFE6] font-semibold text-xl cursor-pointer">Learnify</Link></div>
       </div>
       <ul className="flex gap-5 justify-center items-center text-[#0DAFE6]">
         <li><Link className='active:bg-[#0DAFE6] active:text-white p-4' to="/">Home</Link></li>
@@ -47,10 +49,11 @@ function Header() {
           <FaUserGraduate className='text-[#0DAFE6] text-xl' />
           <FaChevronDown className='text-xs' />
         </div>
-        {showDropDown && <DropDown setPassword={setPassword} setSetting={setSetting} setShowDropDown={setShowDropDown} />}
+        {showDropDown && <DropDown setSavedCourses={setSavedCourses} setPassword={setPassword} setSetting={setSetting} setShowDropDown={setShowDropDown} />}
       </div>
       {setting && <Setting setSetting={setSetting} />}
       {Password && <ChangePassword setPassword={setPassword} />}
+      {/* {savedCourses && <SavedCourses setSavedCourses={setSavedCourses} />} */}
     </div>
   )
 }

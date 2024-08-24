@@ -5,6 +5,7 @@ import FeaturedCourses from "../components/MainPage/FeaturedCourses";
 import Info from "../components/MainPage/Info";
 import Buycourse from "../components/MainPage/Buycourse";
 import SavedCourses from "./SavedCourses";
+import BoughtCoures from "./BoughtCourses";
 
 const mainPage = () => {
   return (
@@ -14,6 +15,7 @@ const mainPage = () => {
       <FeaturedCourses />
       <Info />
       <SavedCourses/>
+      <BoughtCoures/>
       <Buycourse />
   
      

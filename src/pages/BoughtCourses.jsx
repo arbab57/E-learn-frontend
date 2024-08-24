@@ -4,7 +4,7 @@ import { WebHandler } from '../data/remote/WebHandler';
 import { URLS } from '../data/remote/URL';
 import Loader from '../components/General/Loader';
 
-const SavedCourses = () => {
+const BoughtCoures = () => {
 
     const [res, setRes] = useState([]);
     const [loader, setLoader] = useState(false)
@@ -14,8 +14,7 @@ const SavedCourses = () => {
         const fetchData = async () => {
             try {
                 setLoader(true)
-                const { response, status } = await WebHandler(URLS.SAVEDCOURSES, "GET");
-                console.log(status)
+                const { response, status } = await WebHandler(URLS.BOUGHTCOURSES, "GET");
                 if (status === 200 && Array.isArray(response)) {
                     console.log(response);
 
@@ -42,8 +41,8 @@ const SavedCourses = () => {
             {loader && <Loader />}
             <div className=" flex justify-center mb-40">
                 <div className="flex flex-col gap-12 w-[70%]">
-                    <div className="text-4xl">Saved Curses</div>
-                    {noResult ? (<div className="">No Saved Courses</div>) :
+                    <div className="text-4xl">Bought Curses</div>
+                    {noResult ? (<div className="">No BoughtCoures</div>) :
                         <div className="flex flex-wrap gap-8">
                             {res.map((course, index) => {
                                 return <FeatureCard key={index} course={course} />
@@ -57,4 +56,4 @@ const SavedCourses = () => {
     )
 }
 
-export default SavedCourses
+export default BoughtCoures

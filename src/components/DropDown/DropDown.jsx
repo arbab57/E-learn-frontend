@@ -4,7 +4,7 @@ import { URLS } from "../../data/remote/URL";
 import { useNavigate } from "react-router-dom";
 
 
-export default function DropDown({ setSetting, setShowDropDown, setPassword }) {
+export default function DropDown({ setSetting, setShowDropDown, setPassword ,setSavedCourses }) {
 
     const navigate = useNavigate();
 

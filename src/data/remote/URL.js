@@ -5,6 +5,8 @@ export const URLS = {
     REGISTER: BASE_URL + 'auth/register',
     LOGIN: BASE_URL + 'auth/login',
     SIGNOUT: BASE_URL + 'auth/signout',
+    SAVEDCOURSES: BASE_URL + 'courses/saved',
+    BOUGHTCOURSES: BASE_URL + 'courses/bought-courses',
     CHANGEPASSWORD: BASE_URL + 'auth/change-password',
     FEATURED: BASE_URL + 'courses/featured',
 
