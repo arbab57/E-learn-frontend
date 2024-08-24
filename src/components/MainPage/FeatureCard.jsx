@@ -1,7 +1,7 @@
 import React from "react";
 import { MdAccessTimeFilled, MdPlayLesson } from "react-icons/md";
 
-const FeatureCard = ({ data }) => {
+const FeatureCard = ({ course }) => {
 
     const truncateTitle = (title, length = 20) => {
         if (title.length > length) {
@@ -10,17 +10,9 @@ const FeatureCard = ({ data }) => {
         return title;
     };
 
-    // Check if data is an array before mapping
-    if (!Array.isArray(data)) {
-        return <p>No courses available.</p>;
-    }
-
     return (
         <>
-            {data.map((course, index) => {
-                
-              return ( <div
-                    key={index}
+              <div
                     className="w-[30%] pb-3 h-80 flex flex-col justify-between rounded-lg border-[1px] border-black border-opacity-50 transition hover:scale-105 cursor-pointer hover:shadow-xl shadow-black"
                 >
                     <div className="h-36">
@@ -64,8 +56,7 @@ const FeatureCard = ({ data }) => {
                             {course.data.details.price}
                         </div>
                     </div>
-                </div>)
-            })}
+                </div>
         </>
     );
 };

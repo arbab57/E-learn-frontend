@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react'
 const URL = import.meta.env.VITE_URL
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from "../../assets/images/logo2.jpg"
 import { FaUserGraduate, FaChevronDown } from 'react-icons/fa';
 import DropDown from '../MainPage/DropDown';
 import Setting from '../Setting';
 
 
-
-
 function Header() {
 
+  const navigate = useNavigate();
   const [showDetails, setShowDetails] = useState(false)
   const [showDropDown, setShowDropDown] = useState(false)
   const [res, setRes] = useState(null)
@@ -20,19 +19,14 @@ function Header() {
       const response = await fetch(`${URL}/auth/check`, {
         credentials: 'include',
       })
-      setRes(response.status)
+      if (response.status !== 200) {
+        console.error(`Error: ${response.status}`);
+        navigate("/login");
+      }
     }
-    fetchData()
+    const intervalId = setInterval(fetchData, 120000);
+    return () => clearInterval(intervalId);
   }, [])
-
-
-  const signOut = async () => {
-    const response = await fetch(`${URL}/auth/signout`, {
-      method: 'POST',
-      credentials: 'include',
-    })
-    setRes(400)
-  }
 
 
 
@@ -56,7 +50,7 @@ function Header() {
         </div>
         {showDropDown && <DropDown setShowDetails={setShowDetails} setShowDropDown={setShowDropDown} />}
       </div>
-      {showDetails && <Setting setShowDetails={setShowDetails}/>}
+      {showDetails && <Setting setShowDetails={setShowDetails} />}
     </div>
   )
 }

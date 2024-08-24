@@ -3,13 +3,13 @@ import FeatureCard from "./FeatureCard";
 import { WebHandler } from "../../data/remote/WebHandler";
 import { URLS } from "../../data/remote/URL";
 const FeaturedCourses = () => {
-    const [response, setResponse] = useState([]);
-
+    const [res, setRes] = useState([]);
+    
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const result = await WebHandler(URLS.FEATURED, "GET");
-                setResponse(result);
+                const { response, status } = await WebHandler(URLS.FEATURED, "GET");
+                setRes(response);
             } catch (error) {
                 console.error("Error sending data:", error);
             }
@@ -30,8 +30,11 @@ const FeaturedCourses = () => {
                     </button>
                 </div>
                 <div className="flex flex-wrap gap-8">
-                    {/* { } */}
-                    <FeatureCard data={response.response} />
+
+                    {res.map((course, index) => {
+                        return <FeatureCard key={index} course={course} />
+                    }
+                    )}
                 </div>
             </div>
         </div>
