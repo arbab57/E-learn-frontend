@@ -3,16 +3,17 @@ const URL = import.meta.env.VITE_URL
 import { Link, useNavigate } from 'react-router-dom';
 import logo from "../../assets/images/logo2.jpg"
 import { FaUserGraduate, FaChevronDown } from 'react-icons/fa';
-import DropDown from '../MainPage/DropDown';
-import Setting from '../Setting';
+import DropDown from '../DropDown/DropDown';
+import Setting from '../DropDown/Setting';
+import ChangePassword from '../DropDown/ChangePassword';
 
 
 function Header() {
 
   const navigate = useNavigate();
-  const [showDetails, setShowDetails] = useState(false)
+  const [setting, setSetting] = useState(false)
+  const [Password, setPassword] = useState(false)
   const [showDropDown, setShowDropDown] = useState(false)
-  const [res, setRes] = useState(null)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,12 +21,10 @@ function Header() {
         credentials: 'include',
       })
       if (response.status !== 200) {
-        console.error(`Error: ${response.status}`);
         navigate("/login");
       }
     }
-    const intervalId = setInterval(fetchData, 120000);
-    return () => clearInterval(intervalId);
+    fetchData();
   }, [])
 
 
@@ -48,9 +47,10 @@ function Header() {
           <FaUserGraduate className='text-[#0DAFE6] text-xl' />
           <FaChevronDown className='text-xs' />
         </div>
-        {showDropDown && <DropDown setShowDetails={setShowDetails} setShowDropDown={setShowDropDown} />}
+        {showDropDown && <DropDown setPassword={setPassword} setSetting={setSetting} setShowDropDown={setShowDropDown} />}
       </div>
-      {showDetails && <Setting setShowDetails={setShowDetails} />}
+      {setting && <Setting setSetting={setSetting} />}
+      {Password && <ChangePassword setPassword={setPassword} />}
     </div>
   )
 }

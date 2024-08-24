@@ -40,7 +40,7 @@ const Login = () => {
 
     return (
         <>
-            {showToast && <Toast message={res} onClose={setShowToast}/>}
+            {showToast && <Toast message={res} severity={"danger"} onClose={setShowToast} />}
             {loading && <Loader />}
             <div className="bg-[#f2f6f8]  w-screen fixed top-0 left-0 flex flex-col justify-center h-screen">
                 <form onSubmit={handleSubmit} className="w-full max-w-md mx-auto p-8 bg-white rounded shadow-md">
