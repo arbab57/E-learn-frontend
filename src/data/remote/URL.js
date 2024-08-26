@@ -11,9 +11,6 @@ export const URLS = {
     SAVEDCOURSES: BASE_URL + 'courses/saved',
     BOUGHTCOURSES: BASE_URL + 'courses/bought-courses',
     FEATURED: BASE_URL + 'courses/featured',
-<<<<<<< HEAD
     COURSES: BASE_URL + 'courses/search',
 
-=======
->>>>>>> 94c8a833d2e14943432ff091b88be55e23e4051a
 }
