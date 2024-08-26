@@ -54,7 +54,7 @@ const CardDetails = ({
     <div className="flex ">
       {/* <h1 className="text-4xl text-[#0DAFE6] font-bold ">Course Details</h1> */}
     </div>
-    <div className="mb-2 relative">
+    <div className="mb-4 relative">
   <input
     type="text"
     placeholder="Search courses..."
