@@ -36,7 +36,7 @@ const BoughtCoures = () => {
     return (
         <div className="">
             {loader && <Loader />}
-            <div className=" flex justify-center mb-40">
+            <div className=" flex justify-center min-h-screen">
                 <div className="flex flex-col gap-12 w-[70%]">
                     <div className="text-4xl">Bought Curses</div>
                     {noResult ? (<div className="">No Bought Coures</div>) :
