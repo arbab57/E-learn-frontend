@@ -1,12 +1,16 @@
 import React from "react";
+import logo from "../../assets/images/logo2.jpg"
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const Footer = () => {
   return (
     <footer className="bg-gray-100 w-full h-1/4 px-4 py-4 mt-3">
-      <div className="container mx-auto flex flex-col lg:flex-row justify-between items-start lg:items-center">
-        <div className="mb-4 lg:mb-0 mx-10">
-          <h2 className="text-xl font-bold text-[#0DAFE6]">Learnify</h2>
+      <div className="container mx-auto flex  flex-col lg:flex-row justify-between items-start lg:items-center">
+        <div className="mb-4 lg:mb-0 mx-10 items-center">
+        <img className='w-7 h-7' src={logo} alt="" /> 
+        <div>
+          <h2 className="text-2xl font-bold text-[#0DAFE6]"> Learnify</h2>
+          </div>
           <p className="text-gray-600 mt-2 max-w-xs text-sm">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
