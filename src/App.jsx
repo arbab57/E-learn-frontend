@@ -4,12 +4,10 @@ import MainPage from './pages/mainPage'
 import Mainlayout from './layouts/mainlayout'
 import Login from './pages/Login'
 import '@fortawesome/fontawesome-free/css/all.min.css';
-// import SavedCourses from './pages/SavedCourses';
-// import SavedPage from './pages/SavedPage';
-// import SavedCoursesLayout from './layouts/SavedCoursesLayout';
 import Register from './pages/Register';
 import ForgetPassword from './pages/ForgetPassword';
-// import ResetPassword from "./components/ResetPassword"
+import SavedCourses from './pages/SavedCourses';
+import BoughtCoures from './pages/BoughtCourses';
 
 
 
@@ -24,10 +22,9 @@ function App() {
         <Route path='/forget' element={< ForgetPassword />} />
         <Route path="/" element={<Mainlayout />}>
           <Route index element={<MainPage />} />
+          <Route path='/saved-courses' element={<SavedCourses />} />
+          <Route path='/bought-courses' element={<BoughtCoures />} />
         </Route>
-        {/* <Route path="/saved-curses" element={<SavedCoursesLayout />}>
-          <Route index element={<SavedPage />} />
-        </Route> */}
       </>
     )
   )

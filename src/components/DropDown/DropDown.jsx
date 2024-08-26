@@ -21,8 +21,8 @@ export default function DropDown({ setSetting, setShowDropDown, setPassword, set
             <div className="flex flex-col gap-3 items-start p-4">
                 <button onClick={() => setSetting(true)} className="w-full p-2 text-left hover:bg-[#f2f6f8]">Settings</button>
                 <button onClick={() => setPassword(true)} className="w-full p-2 text-left hover:bg-[#f2f6f8]">Changes Password</button>
-                <button onClick={() => setSavedCourses(true)} className="w-full p-2 text-left hover:bg-[#f2f6f8]">Saved Courses</button>
-                <button className="w-full p-2 text-left hover:bg-[#f2f6f8]">Bought Courses</button>
+                <button onClick={() => navigate("/saved-courses")} className="w-full p-2 text-left hover:bg-[#f2f6f8]">Saved Courses</button>
+                <button onClick={() => navigate("/bought-courses")} className="w-full p-2 text-left hover:bg-[#f2f6f8]">Bought Courses</button>
                 <button onClick={signOut} className="w-full p-2 text-left hover:bg-[#f2f6f8]">SignOut</button>
             </div>
 

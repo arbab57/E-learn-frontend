@@ -28,13 +28,15 @@ const GetOpt = ({ isEmail ,setOpt }) => {
             // const { response, status } = await WebHandler(URLS.RESETPASSWORD, 'POST', body);
             const res = await fetch("https://elearningportal-56538109f664.herokuapp.com/auth/reset-password", {
                 method: 'POST',
-                // credentials: 'include',
+                credentials: 'include',
                 headers: {
                   'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(obj)
               })
-            console.log(res)
+              console.log(res)
+              const resj = await res.json()
+            console.log(resj)
             // console.log(status)
             // if (status === 200) {
             //     console.log(response.message)

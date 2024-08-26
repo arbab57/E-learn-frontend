@@ -36,7 +36,7 @@ const SavedCourses = () => {
     return (
         <div className="">
             {loader && <Loader />}
-            <div className=" flex justify-center mb-40 w-screen h-screen">
+            <div className=" flex justify-center mb-40">
                 <div className="flex flex-col gap-12 w-[70%]">
                     <div className="text-4xl">Saved Curses</div>
                     {noResult ? (<div className="">No Saved Courses</div>) :
