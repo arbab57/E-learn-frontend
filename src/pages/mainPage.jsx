@@ -5,7 +5,6 @@ import FeaturedCourses from "../components/MainPage/FeaturedCourses";
 import Info from "../components/MainPage/Info";
 import Buycourse from "../components/MainPage/Buycourse";
 
-
 const mainPage = () => {
   return (
     <div className="">
@@ -14,8 +13,6 @@ const mainPage = () => {
       <FeaturedCourses />
       <Info />
       <Buycourse />
-  
-     
     </div>
   );
 };

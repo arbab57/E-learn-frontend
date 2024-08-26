@@ -12,7 +12,7 @@ const Footer = () => {
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
         </div>
-        <div className="flex justify-between w-full lg:w-auto space-x-10">
+        <div className="flex  justify-between w-full lg:w-auto  space-x-10">
           <div>
             <h3 className="text-md font-semibold mb-3">GET HELP</h3>
             <ul className="text-gray-600 text-sm">
