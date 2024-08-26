@@ -33,8 +33,6 @@ function Header() {
 
   return (
     <div className='head py-2 flex justify-around items-center mb-2'>
-      {/* {showLogin && <Login setShowLogin={setShowLogin} />} */}
-      {/* {showRegister && <Register setShowRegister={setShowRegister} />} */}
       <div className="logo flex justify-center items-center">
         <img className='w-12 h-12' src={logo} alt="" />
         <div ><Link className="text-[#0DAFE6] font-semibold text-xl cursor-pointer">Learnify</Link></div>
@@ -53,7 +51,7 @@ function Header() {
       </div>
       {setting && <Setting setSetting={setSetting} />}
       {Password && <ChangePassword setPassword={setPassword} />}
-      {/* {savedCourses && <SavedCourses setSavedCourses={setSavedCourses} />} */}
+      {savedCourses && <SavedCourses setSavedCourses={setSavedCourses} />}
     </div>
   )
 }

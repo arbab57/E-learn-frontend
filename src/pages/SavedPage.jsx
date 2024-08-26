@@ -1,12 +1,12 @@
-import React from 'react'
-import SavedCourses from './SavedCourses'
+// import React from 'react'
+// import SavedCourses from './SavedCourses'
 
-const SavedPage = () => {
-    return (
-        <div className="">
-        <SavedCourses/>
-        </div>
-    )
-}
+// const SavedPage = () => {
+//     return (
+//         <div className="">
+//         <SavedCourses/>
+//         </div>
+//     )
+// }
 
-export default SavedPage
+// export default SavedPage

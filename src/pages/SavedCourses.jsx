@@ -15,12 +15,8 @@ const SavedCourses = () => {
             try {
                 setLoader(true)
                 const { response, status } = await WebHandler(URLS.SAVEDCOURSES, "GET");
-                console.log(status)
                 if (status === 200 && Array.isArray(response)) {
-                    console.log(response);
-
                     if (response.length === 0) {
-                        // Set no result if the array is empty
                         setNoResult(true);
                     } else {
                         setRes(response);
@@ -40,7 +36,7 @@ const SavedCourses = () => {
     return (
         <div className="">
             {loader && <Loader />}
-            <div className=" flex justify-center mb-40">
+            <div className=" flex justify-center mb-40 w-screen h-screen">
                 <div className="flex flex-col gap-12 w-[70%]">
                     <div className="text-4xl">Saved Curses</div>
                     {noResult ? (<div className="">No Saved Courses</div>) :

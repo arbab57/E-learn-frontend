@@ -16,10 +16,7 @@ const BoughtCoures = () => {
                 setLoader(true)
                 const { response, status } = await WebHandler(URLS.BOUGHTCOURSES, "GET");
                 if (status === 200 && Array.isArray(response)) {
-                    console.log(response);
-
                     if (response.length === 0) {
-                        // Set no result if the array is empty
                         setNoResult(true);
                     } else {
                         setRes(response);
@@ -42,7 +39,7 @@ const BoughtCoures = () => {
             <div className=" flex justify-center mb-40">
                 <div className="flex flex-col gap-12 w-[70%]">
                     <div className="text-4xl">Bought Curses</div>
-                    {noResult ? (<div className="">No BoughtCoures</div>) :
+                    {noResult ? (<div className="">No Bought Coures</div>) :
                         <div className="flex flex-wrap gap-8">
                             {res.map((course, index) => {
                                 return <FeatureCard key={index} course={course} />

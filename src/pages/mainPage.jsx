@@ -14,8 +14,8 @@ const mainPage = () => {
       <Categories />
       <FeaturedCourses />
       <Info />
-      <SavedCourses/>
-      <BoughtCoures/>
+      {/* <SavedCourses/> */}
+      {/* <BoughtCoures/> */}
       <Buycourse />
   
      
