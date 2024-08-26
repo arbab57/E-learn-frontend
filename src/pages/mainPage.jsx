@@ -1,11 +1,11 @@
 import React from "react";
-// import Intro from "../components/MainPage/Intro";
-// import Categories from "../components/MainPage/Categories";
-// import FeaturedCourses from "../components/MainPage/FeaturedCourses";
-// import Info from "../components/MainPage/Info";
-// import Buycourse from "../components/MainPage/Buycourse";
-import CourseDetails from "../components/MainPage/CourseDetails";
-// import CoursesList from "../components/MainPage/CourseList";
+import Intro from "../components/MainPage/Intro";
+import Categories from "../components/MainPage/Categories";
+import FeaturedCourses from "../components/MainPage/FeaturedCourses";
+import Info from "../components/MainPage/Info";
+import Buycourse from "../components/MainPage/Buycourse";
+import SavedCourses from "./SavedCourses";
+import BoughtCoures from "./BoughtCourses";
 
 const mainPage = () => {
   return (
@@ -14,8 +14,9 @@ const mainPage = () => {
       <Categories />
       <FeaturedCourses />
       <Info />
-      <Buycourse /> */}
-      <CourseDetails />
+      {/* <SavedCourses/> */}
+      {/* <BoughtCoures/> */}
+      <Buycourse />
   
      
     </div>

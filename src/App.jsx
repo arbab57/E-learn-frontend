@@ -2,8 +2,12 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 
 import MainPage from './pages/mainPage'
 import Mainlayout from './layouts/mainlayout'
-import Login from './pages/Login'// In your index.js or App.js
+import Login from './pages/Login'
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import Register from './pages/Register';
+import ForgetPassword from './pages/ForgetPassword';
+import SavedCourses from './pages/SavedCourses';
+import BoughtCoures from './pages/BoughtCourses';
 
 
 
@@ -12,9 +16,14 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
-      <Route path='/login' element={<Login/>}/>
+
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/forget' element={< ForgetPassword />} />
         <Route path="/" element={<Mainlayout />}>
           <Route index element={<MainPage />} />
+          <Route path='/saved-courses' element={<SavedCourses />} />
+          <Route path='/bought-courses' element={<BoughtCoures />} />
         </Route>
       </>
     )

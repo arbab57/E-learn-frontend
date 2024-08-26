@@ -17,7 +17,7 @@ const severityIcons = {
     danger: <FaTimesCircle className="text-2xl" />,
 };
 
-const Toast = ({ message, severity = "danger", onClose }) => {
+const Toast = ({ message, severity = "", onClose }) => {
     const [isVisible, setIsVisible] = useState(true);
 
     useEffect(() => {
