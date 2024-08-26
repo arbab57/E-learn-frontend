@@ -32,7 +32,7 @@ const FeaturedCourses = () => {
   }, []);
 
   return (
-    <div onClick={()=>navigate("/course-details")} className="flex justify-center mb-40">
+    <div className="flex justify-center mb-40">
       <div className="w-[70%]">
         <div className="flex justify-between items-center mb-12">
           <div className="">

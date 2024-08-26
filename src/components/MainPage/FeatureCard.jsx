@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { MdAccessTimeFilled, MdPlayLesson } from "react-icons/md";
+import { GiSaveArrow } from "react-icons/gi";
+import { useNavigate } from "react-router-dom";
+import { WebHandler } from "../../data/remote/WebHandler";
+import { URLS } from "../../data/remote/URL";
+import Toast from "../General/Toast";
 
 const FeatureCard = ({ course }) => {
-  // console.log(JSON.stringify(course))
+  const navigate = useNavigate();
+
+  const [res, setres] = useState();
+  const [showToast, setShowToast] = useState(false);
+  const [severity, setSeverity] = useState(false);
 
   const truncateTitle = (title, length = 20) => {
     if (title.length > length) {
@@ -11,17 +20,50 @@ const FeatureCard = ({ course }) => {
     return title;
   };
 
+  const saveCourse = async () => {
+    const { response, status } = await WebHandler(
+      `${URLS.SAVENEWCOURSE}${course.id}`,
+      "POST"
+    );
+    if (status === 200) {
+      setSeverity("success");
+      setShowToast(true);
+      setres(response.message);
+    } else {
+      setSeverity("danger");
+      setShowToast(true);
+      setres(response.message);
+    }
+  };
+
   return (
     <>
-      <div className="col-span-1 pb-4 h-80 flex flex-col justify-between rounded-lg border border-gray-300 transition hover:scale-105 cursor-pointer hover:shadow-xl shadow-md bg-white hover:bg-gradient-to-br from-blue-50 to-blue-100">
-        <div className="h-36 overflow-hidden rounded-t-lg">
+      {showToast && (
+        <Toast message={res} severity={severity} onClose={setShowToast} />
+      )}
+      <div className="col-span-1 pb-4 h-80 flex flex-col justify-between rounded-lg border border-gray-300 transition hover:scale-105 cursor-pointer hover:shadow-xl shadow-md bg-white hover:bg-gradient-to-br from-blue-50 to-blue-100 relative">
+        {/* Save Course Icon */}
+        <div
+          onClick={saveCourse}
+          className="absolute top-3 right-3 bg-white rounded-full p-2 shadow-md hover:bg-blue-100 transition-colors cursor-pointer z-20"
+        >
+          <GiSaveArrow className="hover:fill-blue-500 text-[#0DAFE6] transition-colors" />
+        </div>
+
+        {/* Course Image */}
+        <div className="h-36 overflow-hidden rounded-t-lg relative">
           <img
             className="object-cover w-full h-full transition-transform duration-300 hover:scale-110"
             src={course.data.details.img}
             alt={course.data.details.title}
           />
         </div>
-        <div className="p-4 flex flex-col justify-between flex-grow">
+
+        {/* Course Details */}
+        <div
+          onClick={() => navigate("/course-details")}
+          className="p-4 flex flex-col justify-between flex-grow"
+        >
           <div>
             <h1 className="font-semibold text-lg text-gray-800">
               {truncateTitle(course.data.details.title)}

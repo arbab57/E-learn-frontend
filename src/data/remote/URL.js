@@ -8,6 +8,7 @@ export const URLS = {
     GETOTP: BASE_URL + 'auth/request-otp',
     RESETPASSWORD: BASE_URL + 'auth/reset-password',
     CHANGEPASSWORD: BASE_URL + 'auth/change-password',
+    SAVENEWCOURSE: BASE_URL + 'courses/saved/',
     SAVEDCOURSES: BASE_URL + 'courses/saved',
     GETCOURSEBYID: BASE_URL + 'courses/get/',
     BOUGHTCOURSES: BASE_URL + 'courses/bought-courses',
