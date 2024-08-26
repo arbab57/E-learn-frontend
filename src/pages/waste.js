@@ -1,9 +1,54 @@
+	
 import React, { useState } from 'react';
+import { WebHandler } from "../data/remote/WebHandler";
+import { URLS } from "../data/remote/URL";
 
 
 
 
-const CourseDetails = ({ course }) => {
+
+
+
+
+
+
+
+
+
+
+
+
+const CourseDetails = async ({ course }) => {
+
+  const [res, setRes] = useState([])
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { response, status } = await WebHandler(URLS.COURSES, "GET");
+  
+        if (status === 200 && Array.isArray(response)) {
+          // Check if response is an array and status is 200
+          setRes(response);
+          console.log(response)
+        } else {
+          setError(true);
+          console.error("Unexpected response format:", response);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setError(true); // Set error state if fetching fails
+      }
+    };
+  
+    fetchData();
+  }, []);
+
+
+
+
+
+
     function convertTimestampToTime(timeInMS) {
         const timeInSeconds = timeInMS / 1000
         const hours = Math.floor(timeInSeconds / 3600);

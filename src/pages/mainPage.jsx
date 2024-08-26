@@ -4,21 +4,15 @@ import Categories from "../components/MainPage/Categories";
 import FeaturedCourses from "../components/MainPage/FeaturedCourses";
 import Info from "../components/MainPage/Info";
 import Buycourse from "../components/MainPage/Buycourse";
-import SavedCourses from "./SavedCourses";
-import BoughtCoures from "./BoughtCourses";
 
 const mainPage = () => {
   return (
     <div className="">
-      {/* <Intro />
+      <Intro />
       <Categories />
       <FeaturedCourses />
       <Info />
-      {/* <SavedCourses/> */}
-      {/* <BoughtCoures/> */}
-      <Buycourse />
-  
-     
+      <Buycourse />     
     </div>
   );
 };

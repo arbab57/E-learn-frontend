@@ -43,8 +43,8 @@ function Header() {
       </div>
       <ul className="flex gap-5 justify-center items-center text-[#0DAFE6]">
         <li><NavLink className={className} to="/">Home</NavLink></li>
-        <li><NavLink className={className} to="/Courses">Courses</NavLink></li>
-        <li><NavLink className={className} to="/Contact Me">Contact Us</NavLink></li>
+        <li><NavLink className={className} to="/courses">Courses</NavLink></li>
+        <li><NavLink className={className} to="/contact Me">Contact Us</NavLink></li>
       </ul>
       <div onClick={() => setShowDropDown(true)} className="relative">
         <div className="flex gap-2 items-center cursor-pointer">

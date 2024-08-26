@@ -8,6 +8,7 @@ import Register from './pages/Register';
 import ForgetPassword from './pages/ForgetPassword';
 import SavedCourses from './pages/SavedCourses';
 import BoughtCoures from './pages/BoughtCourses';
+import CoursesDetails from "./pages/CourseDetails"
 
 
 
@@ -24,6 +25,7 @@ function App() {
           <Route index element={<MainPage />} />
           <Route path='/saved-courses' element={<SavedCourses />} />
           <Route path='/bought-courses' element={<BoughtCoures />} />
+          <Route path='/courses' element={<CoursesDetails />} />
         </Route>
       </>
     )
