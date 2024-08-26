@@ -6,5 +6,6 @@ export const URLS = {
     LOGIN: BASE_URL + 'auth/login',
     SIGNOUT: BASE_URL + 'auth/signout',
     FEATURED: BASE_URL + 'courses/featured',
+    COURSES: BASE_URL + 'courses/search',
 
 }
