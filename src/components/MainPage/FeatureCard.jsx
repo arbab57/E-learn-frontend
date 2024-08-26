@@ -41,7 +41,7 @@ const FeatureCard = ({ course }) => {
       {showToast && (
         <Toast message={res} severity={severity} onClose={setShowToast} />
       )}
-      <div className="col-span-1 pb-4 h-80 flex flex-col justify-between rounded-lg border border-gray-300 transition hover:scale-105 cursor-pointer hover:shadow-xl shadow-md bg-white hover:bg-gradient-to-br from-blue-50 to-blue-100 relative">
+      <div className="col-span-1 pb-4 h-80 flex flex-col justify-between rounded-lg border border-gray-300 transition hover:scale-105 hover:shadow-xl shadow-md bg-white hover:bg-gradient-to-br from-blue-50 to-blue-100 relative">
         {/* Save Course Icon */}
         <div
           onClick={saveCourse}
@@ -62,7 +62,7 @@ const FeatureCard = ({ course }) => {
         {/* Course Details */}
         <div
           onClick={() => navigate("/course-details")}
-          className="p-4 flex flex-col justify-between flex-grow"
+          className="p-4 flex flex-col justify-between flex-grow cursor-pointer"
         >
           <div>
             <h1 className="font-semibold text-lg text-gray-800">

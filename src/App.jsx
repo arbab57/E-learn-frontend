@@ -1,9 +1,4 @@
-import {
-  Route,
-  RouterProvider,
-  createBrowserRouter,
-  createRoutesFromElements,
-} from "react-router-dom";
+import {  Route, RouterProvider, createBrowserRouter, createRoutesFromElements,} from "react-router-dom";
 
 import MainPage from "./pages/mainPage";
 import Mainlayout from "./layouts/mainlayout";
@@ -14,6 +9,8 @@ import ForgetPassword from "./pages/ForgetPassword";
 import SavedCourses from "./pages/SavedCourses";
 import BoughtCoures from "./pages/BoughtCourses";
 import CoursePage from "./pages/CoursePage";
+import NotFoundPage from "./components/NotFound";
+import NotFoundPage1 from "./components/Error";
 
 function App() {
   const router = createBrowserRouter(
@@ -22,6 +19,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forget" element={<ForgetPassword />} />
+        <Route path="/notfound" element={<NotFoundPage />} />
+        <Route path="/notfound1" element={<NotFoundPage1 />} />
         <Route path="/" element={<Mainlayout />}>
           <Route index element={<MainPage />} />
           <Route path="/saved-courses" element={<SavedCourses />} />
