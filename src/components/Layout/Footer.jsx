@@ -92,16 +92,16 @@ const Footer = () => {
               Mail: https://www.helloworldtech.com/
             </p>
             <div className="mt-3 flex space-x-3 text-gray-600">
-              <a href="#" className="hover:text-[#0DAFE6]">
+              <a href="#" className= "text-blue-500 hover:text-[#0DAFE6]">
                 <i className="fab fa-facebook"></i>
               </a>
-              <a href="#" className="hover:text-[#0DAFE6]">
+              <a href="#" className="text-red-600 hover:text-[#0DAFE6]">
                 <i className="fab fa-pinterest"></i>
               </a>
-              <a href="#" className="hover:text-[#0DAFE6]">
+              <a href="#" className="text-[#e1306c] hover:text-[#0DAFE6]">
                 <i className="fab fa-instagram"></i>
               </a>
-              <a href="#" className="hover:text-[#0DAFE6]">
+              <a href="#" className="text-red-600 hover:text-[#0DAFE6]">
                 <i className="fab fa-youtube"></i>
               </a>
             </div>

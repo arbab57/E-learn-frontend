@@ -158,7 +158,7 @@ const CardDetails = ({
         Page {currentPage} of {totalPages}
       </span>
       <button
-        className="bg-[#0DAFE6] text-white px-4 py-2 rounded-lg  transition-all"
+        className="bg-[#0DAFE6] text-white px-4 py-2 rounded-lg  hover:transition-all"
         onClick={handleNextPage}
         disabled={currentPage === totalPages}
       >
