@@ -3,7 +3,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 w-full h-1/4 px-4 py-4">
+    <footer className="bg-gray-100 w-full h-1/4 px-4 py-4 mt-3">
       <div className="container mx-auto flex flex-col lg:flex-row justify-between items-start lg:items-center">
         <div className="mb-4 lg:mb-0 mx-10">
           <h2 className="text-xl font-bold text-[#0DAFE6]">Learnify</h2>

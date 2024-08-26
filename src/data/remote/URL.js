@@ -12,4 +12,6 @@ export const URLS = {
     GETCOURSEBYID: BASE_URL + 'courses/get/',
     BOUGHTCOURSES: BASE_URL + 'courses/bought-courses',
     FEATURED: BASE_URL + 'courses/featured',
+    COURSES: BASE_URL + 'courses/search',
+
 }
