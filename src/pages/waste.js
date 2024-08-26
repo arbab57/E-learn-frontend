@@ -3,21 +3,6 @@ import React, { useState } from 'react';
 import { WebHandler } from "../data/remote/WebHandler";
 import { URLS } from "../data/remote/URL";
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const CourseDetails = async ({ course }) => {
 
   const [res, setRes] = useState([])
