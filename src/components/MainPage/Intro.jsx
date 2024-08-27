@@ -6,7 +6,7 @@ const Intro = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="intro mt-7 h-96 flex justify-around items-center">
+    <div className="mt-7 flex lg:flex-row justify-around items-center flex-col-reverse  md:flex-col-reverse ">
       <div className="text">
         <h2 className="font-medium text-4xl">Build Skills With</h2>
         <h2 className="font-medium text-4xl">Online Courses</h2>
@@ -21,7 +21,7 @@ const Intro = () => {
           Find Course
         </button>
       </div>
-      <img src={introImg} alt="" />
+      <img className="pb-11 md:pb-11" src={introImg} alt="" />
     </div>
   );
 };
