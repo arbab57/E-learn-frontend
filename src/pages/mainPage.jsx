@@ -4,6 +4,7 @@ import Categories from "../components/MainPage/Categories";
 import FeaturedCourses from "../components/MainPage/FeaturedCourses";
 import Info from "../components/MainPage/Info";
 import Buycourse from "../components/MainPage/Buycourse";
+import PaymentCard from "./PaymentCard";
 
 const mainPage = () => {
   return (
@@ -12,7 +13,8 @@ const mainPage = () => {
       <Categories />
       <FeaturedCourses />
       <Info />
-      <Buycourse />
+      <Buycourse />  
+      <PaymentCard/> 
     </div>
   );
 };
