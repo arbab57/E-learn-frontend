@@ -1,15 +1,32 @@
 import React from "react";
+import logo from "../../assets/images/logo2.jpg";
+import { Link } from "react-router-dom";
+
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const Footer = () => {
   return (
     <footer className="bg-gray-100 w-full h-1/4 px-4 py-4 mt-3">
-      <div className="container mx-auto flex flex-col lg:flex-row justify-between items-start lg:items-center">
-        <div className="mb-4 lg:mb-0 mx-10">
-          <h2 className="text-xl font-bold text-[#0DAFE6]">Learnify</h2>
+      <div className="container mx-auto flex  flex-col lg:flex-row justify-between items-start lg:items-center">
+        <div className="mb-4 lg:mb-0 mx-10 items-center">
+          <div className="logo flex justify-start items-start">
+            <img className="w-7 h-7" src={logo} alt="" />
+            <div>
+              <Link className="text-[#0DAFE6] font-semibold text-xl cursor-pointer drop-shadow-2xl">
+                Learnify
+              </Link>
+            </div>
+          </div>
           <p className="text-gray-600 mt-2 max-w-xs text-sm">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            We are providing an{" "}
+            <span className="text-[#0DAFE6] text-[0.85rem] drop-shadow-2xl">
+              {" "}
+              <Link className="text-[#0DAFE6] font-semibold text-xl cursor-pointer drop-shadow-2xl">
+                Learnify
+              </Link>
+            </span>{" "}
+            app for IT students, offering comprehensive courses in programming,
+            cybersecurity, and more to master essential tech skills.
           </p>
         </div>
         <div className="flex  justify-between w-full lg:w-auto  space-x-10">
@@ -75,16 +92,16 @@ const Footer = () => {
               Mail: https://www.helloworldtech.com/
             </p>
             <div className="mt-3 flex space-x-3 text-gray-600">
-              <a href="#" className="hover:text-[#0DAFE6]">
+              <a href="#" className= "text-blue-500 hover:text-[#0DAFE6]">
                 <i className="fab fa-facebook"></i>
               </a>
-              <a href="#" className="hover:text-[#0DAFE6]">
+              <a href="#" className="text-red-600 hover:text-[#0DAFE6]">
                 <i className="fab fa-pinterest"></i>
               </a>
-              <a href="#" className="hover:text-[#0DAFE6]">
+              <a href="#" className="text-[#e1306c] hover:text-[#0DAFE6]">
                 <i className="fab fa-instagram"></i>
               </a>
-              <a href="#" className="hover:text-[#0DAFE6]">
+              <a href="#" className="text-red-600 hover:text-[#0DAFE6]">
                 <i className="fab fa-youtube"></i>
               </a>
             </div>

@@ -48,12 +48,12 @@ function Header() {
           </NavLink>
         </li>
         <li>
-          <NavLink className={className} to="/Courses">
+          <NavLink className={className} to="/courses">
             Courses
           </NavLink>
         </li>
         <li>
-          <NavLink className={className} to="/notfound1">
+          <NavLink className={className} to="/contact-us">
             Contact Us
           </NavLink>
         </li>

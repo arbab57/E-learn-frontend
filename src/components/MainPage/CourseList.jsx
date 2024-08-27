@@ -236,11 +236,7 @@ const CoursesList = () => {
   const filteredCourses = courses.filter((course) =>
     course.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
-
-  // Calculate total pages
   const totalPages = Math.ceil(filteredCourses.length / itemsPerPage);
-
-  // Calculate the courses to be displayed on the current page
   const startIndex = (currentPage - 1) * itemsPerPage;
   const currentCourses = filteredCourses.slice(
     startIndex,
@@ -267,7 +263,7 @@ const CoursesList = () => {
             value={searchTerm}
             onChange={(e) => {
               setSearchTerm(e.target.value);
-              setCurrentPage(1); // Reset to first page when search term changes
+              setCurrentPage(1); 
             }}
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">

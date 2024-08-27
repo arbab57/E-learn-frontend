@@ -14,6 +14,7 @@ import NotFoundPage1 from "./components/Error";
 import Courses from "./pages/Courses";
 import { Context } from "./Context/Context";
 import { useState } from "react";
+import ContactUs from "./pages/ContactUs";
 
 
 function App() {
@@ -26,11 +27,12 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forget" element={<ForgetPassword />} />
-        <Route path="/notfound" element={<NotFoundPage />} />
-        <Route path="/notfound1" element={<NotFoundPage1 />} />
+        {/* <Route path="/notfound" element={<NotFoundPage />} />
+        <Route path="/notfound1" element={<NotFoundPage1 />} /> */}
         <Route path="/" element={<Mainlayout />}>
           <Route index element={<MainPage />} />
           <Route path="/courses" element={<Courses />} />
+          <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/saved-courses" element={<SavedCourses />} />
           <Route path="/bought-courses" element={<BoughtCoures />} />
           <Route path="/course-details" element={<CoursePage />} />
