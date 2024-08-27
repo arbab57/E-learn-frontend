@@ -7,8 +7,8 @@ const Buycourse = () => {
     <div className="mt-7 flex lg:flex-row justify-around items-center flex-col  md:flex-col mb-40">
       <div className=" flex justify-center">
         <img
-          className="duration-300 hover:scale-105"
-          src={Intro}
+          className="duration-300 hover:scale-105 pb-11 md:pb-11"
+          src="https://www.scnsoft.com/education-industry/elearning-portal/elearning-portals-cover-picture.svg"
           alt="Introduction"
         />
       </div>
