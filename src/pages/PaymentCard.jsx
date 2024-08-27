@@ -1,78 +1,106 @@
 import React from "react";
 
-const PaymentCard = () => {
+const PaymentCard = ({ courseTitle, courseImage , coursePrice }) => {
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-sm">
-        <h2 className="text-gray-600 font-medium mb-6">PAYMENT DETAILS</h2>
-        <form>
-          <div className="mb-4">
-            <label className="block text-sm text-gray-600 mb-2" htmlFor="cardNumber">
-              Card Number
-            </label>
-            <input
-              id="cardNumber"
-              type="text"
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#0DAFE6]"
-              placeholder="1234 5678 9012 3457"
-            />
+<div className="flex justify-center items-center min-h-screen bg-gray-100">
+  <div className="bg-white shadow-lg rounded-lg p-10 w-full max-w-4xl flex flex-col md:flex-row">
+    {/* Course Details */}
+    <div className="bg-white rounded-lg p-8 flex-1 flex flex-col justify-between">
+      <h2 className="text-gray-600 font-semibold text-lg mb-6">COURSE DETAILS</h2>
+      <div className="flex items-center justify-center">
+        {courseImage ? (
+          <img
+            src={courseImage}
+            alt={courseTitle}
+            className="w-full h-64 object-cover rounded-lg shadow-md"
+          />
+        ) : (
+          <div className="bg-gray-200 shadow-inner w-full h-64 rounded-lg flex items-center justify-center">
+            <span className="text-gray-600">No Image Available</span>
           </div>
-          <div className="mb-4">
-            <label className="block text-sm text-gray-600 mb-2" htmlFor="cardName">
-              Cardholder's Name
-            </label>
-            <input
-              id="cardName"
-              type="text"
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#0DAFE6]"
-              placeholder="Name"
-            />
-          </div>
-          <div className="flex space-x-4 mb-6">
-            <div className="flex-1">
-              <label className="block text-sm text-gray-600 mb-2" htmlFor="expiration">
-                Expiration
-              </label>
-              <input
-                id="expiration"
-                type="text"
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-"
-                placeholder="MM/YYYY"
-              />
-            </div>
-            <div className="flex-1">
-              <label className="block text-sm text-gray-600 mb-2" htmlFor="cvv">
-                CVV
-              </label>
-              <input
-                id="cvv"
-                type="password"
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-yellow-500"
-                placeholder="•••"
-              />
-            </div>
-          </div>
-          <div className="flex items-center justify-between">
-        
-            <button
-              type="submit"
-              className="bg-[#0DAFE6] text-white rounded-full p-4 shadow-lg hover:bg-[#0DAFE6] focus:outline-none focus:ring-2 focus:ring-[#0DAFE6]"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={2}
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </button>
-          </div>
-        </form>
+        )}
       </div>
+      <h3 className=" text-gray-600 text-start text-xl font-bold">
+        {courseTitle}
+      </h3>
+      <p className=" text-gray-600 text-start text-xl font-bold">
+        {coursePrice}
+        <span className="text-sm text-[#0DAFE6]">Happy Shoping</span>
+      </p>
     </div>
+
+    {/* Payment Details */}
+    <div className="bg-white rounded-lg p-8 flex-1 md:ml-8 flex flex-col justify-between shadow-md mt-8 md:mt-0">
+      <h2 className="text-gray-600 font-semibold text-lg mb-6">PAYMENT DETAILS</h2>
+
+      <form className="flex flex-col justify-between flex-1">
+        <div className="mb-6">
+          <label
+            className="block text-sm text-gray-600 mb-2"
+            htmlFor="cardNumber"
+          >
+            Card Number
+          </label>
+          <input
+            id="cardNumber"
+            type="text"
+            className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:border-[#0DAFE6]"
+            placeholder="1234 5678 9012 3457"
+          />
+        </div>
+        <div className="mb-6">
+          <label
+            className="block text-sm text-gray-600 mb-2"
+            htmlFor="cardName"
+          >
+            Cardholder's Name
+          </label>
+          <input
+            id="cardName"
+            type="text"
+            className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:border-[#0DAFE6]"
+            placeholder="Name"
+          />
+        </div>
+        <div className="flex space-x-6 mb-6">
+          <div className="flex-1">
+            <label
+              className="block text-sm text-gray-600 mb-2"
+              htmlFor="expiryDate"
+            >
+              Expiry Date
+            </label>
+            <input
+              id="expiryDate"
+              type="text"
+              className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:border-[#0DAFE6]"
+              placeholder="MM/YY"
+            />
+          </div>
+          <div className="flex-1">
+            <label
+              className="block text-sm text-gray-600 mb-2"
+              htmlFor="cvv"
+            >
+              CVV
+            </label>
+            <input
+              id="cvv"
+              type="text"
+              className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:border-[#0DAFE6]"
+              placeholder="123"
+            />
+          </div>
+        </div>
+        <button className="w-full bg-[#0DAFE6] text-white py-4 rounded-lg font-semibold hover:bg-[#0a94c5] transition-all">
+          Confirm Payment
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
   );
 };
 

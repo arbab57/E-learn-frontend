@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { WebHandler } from "../data/remote/WebHandler";
 import { URLS } from "../data/remote/URL";
+import PaymentCard from "../pages/PaymentCard";
 import CardDetails from "../components/MainPage/CardDetails";
 
 const CourseDetails = () => {
@@ -8,6 +9,17 @@ const CourseDetails = () => {
   const [error, setError] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const coursesPerPage = 3;
+  const [selectedCourseTitle, setSelectedCourseTitle] = useState("");
+  const [selectedCourseImage, setSelectedCourseImage] = useState("");
+  const [selectedCoursePrice, setSelectedCoursePrice] = useState("");
+
+
+  const handleCourseSelect = (title, image, Price) => {
+    setSelectedCourseTitle(title);
+    setSelectedCourseImage(image);
+    setSelectedCoursePrice(Price);
+
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,12 +42,18 @@ const CourseDetails = () => {
 
   return (
     <div>
-      {/* <h2 className="text-xl font-bold p-6">Course Details</h2> */}
       <CardDetails
         courses={courses}
         currentPage={currentPage}
         coursesPerPage={coursesPerPage}
         setCurrentPage={setCurrentPage}
+        onCourseSelect={handleCourseSelect} 
+      />
+      <PaymentCard
+        courseTitle={selectedCourseTitle}
+        courseImage={selectedCourseImage}
+        coursePrice={selectedCoursePrice}
+
       />
     </div>
   );
