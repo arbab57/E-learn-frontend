@@ -4,7 +4,7 @@ import { TiTick } from "react-icons/ti";
 
 const Buycourse = () => {
   return (
-    <div className="flex justify-around items-center mb-40">
+    <div className="mt-7 flex lg:flex-row justify-around items-center flex-col  md:flex-col mb-40">
       <div className=" flex justify-center">
         <img
           className="duration-300 hover:scale-105"
