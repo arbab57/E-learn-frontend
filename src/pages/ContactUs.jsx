@@ -7,7 +7,7 @@ const ContactUs = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Contact Information Section */}
         <div>
-          <h2 className="text-2xl font-bold mb-4">Need A Direct Line?</h2>
+          <h2 className="text-2xl font-bold mb-4 text-[#0DAFE6]">Need A Direct Line?</h2>
           <p className="text-gray-600 mb-4">
             Ground Floor, Alpha-Software Technology Park, Canal Rd, near Canal
             View Hotel, Rahim Yar Khan, Punjab 64200, Pakistan

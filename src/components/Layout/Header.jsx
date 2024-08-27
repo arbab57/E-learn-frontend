@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 const URL = import.meta.env.VITE_URL;
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo2.jpg";
-import { FaUserGraduate, FaChevronDown, FaBars } from "react-icons/fa";
+import { FaUserGraduate, FaChevronDown, FaBars, FaTimes } from "react-icons/fa";
+// import { FaUserGraduate, FaChevronDown, FaBars } from "react-icons/fa";
 import DropDown from "../DropDown/DropDown";
 import Setting from "../DropDown/UserDetails";
 import ChangePassword from "../DropDown/ChangePassword";
@@ -12,6 +13,7 @@ function Header() {
   const [setting, setSetting] = useState(false);
   const [Password, setPassword] = useState(false);
   const [showDropDown, setShowDropDown] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,36 +34,69 @@ function Header() {
   };
 
   return (
-    <div className="head py-2 flex justify-around items-center mb-2">
-      <div className="logo flex justify-center items-center">
-        <img className="w-12 h-12" src={logo} alt="" />
-        <div>
-          <Link className="text-[#0DAFE6] font-semibold text-xl cursor-pointer">
-            Learnify
-          </Link>
-        </div>
+    <div className="head py-2 flex justify-between items-center mb-2 px-4 sm:px-8 ">
+<div className="logo items-center hidden sm:flex">
+  <img className="w-12 h-12" src={logo} alt="Learnify Logo" />
+  <Link to="/" className="text-[#0DAFE6] font-semibold text-xl ml-2 cursor-pointer">
+    Learnify
+  </Link>
+</div>
+
+
+      <div className="sm:hidden">
+        <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          {isMenuOpen ? (
+            <FaTimes className="text-[#0DAFE6] text-2xl" />
+          ) : (
+            <FaBars className="text-[#0DAFE6] text-2xl" />
+          )}
+        </button>
       </div>
-      <ul className="flex gap-5 justify-center items-center text-[#0DAFE6]">
+
+      <ul
+        className={`flex gap-3 p-5 items-center text-[#0DAFE6] sm:flex ${
+          isMenuOpen
+            ? "flex flex-col absolute top-16 justify-end left-0 w-full bg-white p-4"
+            : "hidden"
+        }`}
+      >
         <li>
-          <NavLink className={className} to="/">
+          <NavLink
+            exact
+            className="text-[#0c8ab8] hover:bg-[#0DAFE6] hover:text-white px-4 py-2"
+            to="/"
+            activeClassName="text-[#0c8ab8] "
+          >
             Home
           </NavLink>
         </li>
         <li>
-          <NavLink className={className} to="/courses">
+          <NavLink
+             className="text-[#0c8ab8] hover:bg-[#0DAFE6] hover:text-white px-4 py-2"
+            to="/courses"
+            activeClassName="text-[#0c8ab8]"
+          >
             Courses
           </NavLink>
         </li>
         <li>
-          <NavLink className={className} to="/contact-us">
+          <NavLink
+            className="text-[#0c8ab8] hover:bg-[#0DAFE6] hover:text-white px-4 py-2"
+            to="/contact-us"
+            activeClassName="text-[#0c8ab8]"
+          >
             Contact Us
           </NavLink>
         </li>
       </ul>
-      <div onClick={() => setShowDropDown(true)} className="relative">
-        <div className="flex gap-2 items-center cursor-pointer">
+
+      <div className="relative flex items-center ">
+        <div
+          onClick={() => setShowDropDown(!showDropDown)}
+          className=" flex gap-2 items-center cursor-pointer"
+        >
           <FaUserGraduate className="text-[#0DAFE6] text-xl" />
-          <FaChevronDown className="text-xs" />
+          <FaChevronDown className="text-sm" />
         </div>
         {showDropDown && (
           <DropDown
