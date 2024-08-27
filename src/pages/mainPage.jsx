@@ -12,7 +12,7 @@ const mainPage = () => {
       <Categories />
       <FeaturedCourses />
       <Info />
-      <Buycourse />     
+      <Buycourse />   
     </div>
   );
 };
