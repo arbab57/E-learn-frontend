@@ -28,7 +28,7 @@ export default function DropDown({
           onClick={() => setSetting(true)}
           className="w-full p-2 text-left hover:bg-[#f2f6f8]"
         >
-          Settings
+          User Details
         </button>
         <button
           onClick={() => setPassword(true)}

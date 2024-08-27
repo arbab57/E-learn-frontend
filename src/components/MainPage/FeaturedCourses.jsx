@@ -2,14 +2,12 @@ import React, { useEffect, useState } from "react";
 import FeatureCard from "./FeatureCard";
 import { WebHandler } from "../../data/remote/WebHandler";
 import { URLS } from "../../data/remote/URL";
-import { useNavigate } from "react-router-dom";
 
 const FeaturedCourses = () => {
 
   const [res, setRes] = useState([]);
   const [error, setError] = useState(false);
 
-  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,7 +30,7 @@ const FeaturedCourses = () => {
   }, []);
 
   return (
-    <div onClick={()=>navigate("/course-details")} className="flex justify-center mb-40">
+    <div className="flex justify-center mb-40">
       <div className="w-[70%]">
         <div className="flex justify-between items-center mb-12">
           <div className="">

@@ -4,7 +4,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo2.jpg";
 import { FaUserGraduate, FaChevronDown, FaBars } from "react-icons/fa";
 import DropDown from "../DropDown/DropDown";
-import Setting from "../DropDown/Setting";
+import Setting from "../DropDown/UserDetails";
 import ChangePassword from "../DropDown/ChangePassword";
 
 function Header() {
@@ -53,7 +53,7 @@ function Header() {
           </NavLink>
         </li>
         <li>
-          <NavLink className={className} to="/Contact Me">
+          <NavLink className={className} to="/notfound1">
             Contact Us
           </NavLink>
         </li>
