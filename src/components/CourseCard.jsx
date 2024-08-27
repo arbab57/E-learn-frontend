@@ -141,3 +141,70 @@ const CourseCard = ({ course }) => {
 }
 
 export default CourseCard
+
+
+
+// import React, { useState, useEffect } from 'react';
+// import { WebHandler } from '../data/remote/WebHandler';
+// import { URLS } from '../data/remote/URL';
+// import CourseCard from './CourseCard';
+
+// const CourseList = () => {
+//     const [courses, setCourses] = useState([]);
+//     const [savedCourses, setSavedCourses] = useState([]);
+
+//     useEffect(() => {
+//         const fetchCourses = async () => {
+//             try {
+//                 const { response, status } = await WebHandler(URLS.ALLCOURSES, "GET");
+//                 if (status === 200 && Array.isArray(response)) {
+//                     setCourses(response);
+//                 } else {
+//                     console.error("Unexpected response format:", response);
+//                 }
+//             } catch (error) {
+//                 console.error("Error fetching courses:", error);
+//             }
+//         };
+
+//         const fetchSavedCourses = async () => {
+//             try {
+//                 const { response, status } = await WebHandler(URLS.SAVEDCOURSES, "GET");
+//                 if (status === 200 && Array.isArray(response)) {
+//                     const savedCourseIds = response.map(course => course._id);
+//                     setSavedCourses(savedCourseIds);
+//                     localStorage.setItem('savedCourses', JSON.stringify(savedCourseIds));
+//                 } else {
+//                     console.error("Unexpected response format:", response);
+//                 }
+//             } catch (error) {
+//                 console.error("Error fetching saved courses:", error);
+//             }
+//         };
+
+//         fetchCourses();
+//         fetchSavedCourses();
+//     }, []);
+
+//     const handleSaveStatusChange = (courseId, isSaved) => {
+//         if (isSaved) {
+//             setSavedCourses(prev => [...prev, courseId]);
+//         } else {
+//             setSavedCourses(prev => prev.filter(id => id !== courseId));
+//         }
+//     };
+
+//     return (
+//         <div>
+//             {courses.map(course => (
+//                 <CourseCard 
+//                     key={course._id} 
+//                     course={course} 
+//                     onSaveStatusChange={handleSaveStatusChange}
+//                 />
+//             ))}
+//         </div>
+//     );
+// };
+
+// export default CourseList;
