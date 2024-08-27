@@ -1,13 +1,24 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { MdAccessTimeFilled, MdPlayLesson } from "react-icons/md";
 import { GiSaveArrow } from "react-icons/gi";
 import { useNavigate } from "react-router-dom";
 import { WebHandler } from "../../data/remote/WebHandler";
 import { URLS } from "../../data/remote/URL";
 import Toast from "../General/Toast";
+import { Context } from "../../Context/Context";
+
 
 const FeatureCard = ({ course }) => {
   const navigate = useNavigate();
+
+  const {courseId , setCourseId} = useContext(Context)
+  const handleClick = () => {
+    localStorage.removeItem("courseId")
+    localStorage.setItem("courseId" , JSON.stringify(course.id))
+    setCourseId(course.id)
+    navigate("/course-details")
+  }
+
 
   const [res, setres] = useState();
   const [showToast, setShowToast] = useState(false);
@@ -61,7 +72,7 @@ const FeatureCard = ({ course }) => {
 
         {/* Course Details */}
         <div
-          onClick={() => navigate("/course-details")}
+          onClick={() => {handleClick()}}
           className="p-4 flex flex-col justify-between flex-grow cursor-pointer"
         >
           <div>

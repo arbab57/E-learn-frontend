@@ -12,8 +12,14 @@ import CoursePage from "./pages/CoursePage";
 import NotFoundPage from "./components/NotFound";
 import NotFoundPage1 from "./components/Error";
 import Courses from "./pages/Courses";
+import { Context } from "./Context/Context";
+import { useState } from "react";
+
 
 function App() {
+
+  const [courseId, setCourseId] = useState("")
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
@@ -33,7 +39,12 @@ function App() {
     )
   );
 
-  return <RouterProvider router={router} />;
+  return <>
+    <Context.Provider value={{ courseId, setCourseId }}>
+      <RouterProvider router={router} />;
+    </Context.Provider>
+
+  </>
 }
 
 export default App;

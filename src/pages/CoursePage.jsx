@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaStar, FaUser } from "react-icons/fa";
 import { WebHandler } from "../data/remote/WebHandler";
 import { URLS } from "../data/remote/URL";
@@ -10,12 +10,21 @@ const CoursePage = () => {
   const [videoId, setVideoId] = useState("");
   const [showVideo, setShowVideo] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [courseId, setCourseId] = useState(()=> {
+  const id =  JSON.parse(localStorage.getItem("courseId"))
+  return id;
+  })
+
+ 
+
+
 
   useEffect(() => {
+    window.scrollTo(0,0)
     const fetchData = async () => {
       setLoading(true);
       const { response, status } = await WebHandler(
-        `${URLS.GETCOURSEBYID}${"66cc7229f42611600c93c346"}`,
+        `${URLS.GETCOURSEBYID}${courseId}`,
         "GET"
       );
       setCourse(response);
@@ -34,11 +43,12 @@ const CoursePage = () => {
     const minutes = Math.floor((duration % 3600000) / 60000);
     return `${hours}h ${minutes}m`;
   };
+  console.log(courseId)
 
   return (
     <>
       {loading && <Loader />}
-      <div className="max-w-6xl mx-auto px-4 py-8">
+      <div className="max-w-6xl mx-auto px-4 py-8 min-h-screen">
         {course && (
           <div className="flex flex-col md:flex-row gap-8">
             <div className="md:w-1/2">
