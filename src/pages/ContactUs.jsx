@@ -3,7 +3,7 @@ import React from "react";
 const ContactUs = () => {
    
   return (
-    <div className="max-w-4xl mx-auto p-8">
+    <div className="max-w-4xl mx-auto p-12 mt-9">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Contact Information Section */}
         <div>
@@ -30,7 +30,8 @@ const ContactUs = () => {
         <div>
           <iframe
             title="Google Map"
-            src="https://www.google.com/maps/place/Hello+World+Technologies/@28.4210223,70.3284369,17z/data=!4m16!1m9!3m8!1s0x39375c0f3e943895:0xf236a8d6b01facb8!2sHello+World+Technologies!8m2!3d28.4210176!4d70.3310118!9m1!1b1!16s%2Fg%2F11c5gbm7d0!3m5!1s0x39375c0f3e943895:0xf236a8d6b01facb8!8m2!3d28.4210176!4d70.3310118!16s%2Fg%2F11c5gbm7d0?entry=ttu&g_ep=EgoyMDI0MDgyMS4wIKXMDSoASAFQAw%3D%3D"
+             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.964497137054!2d-74.006015!3d40.712775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDQyJzQ1LjgiTiA3NMKwMDBDJzAwLjAiVw!5e0!3m2!1sen!2sus!4v1645584390047!5m2!1sen!2sus"
+            // src="https://www.google.com/maps/place/Hello+World+Technologies/@28.4210223,70.3284369,17z/data=!4m16!1m9!3m8!1s0x39375c0f3e943895:0xf236a8d6b01facb8!2sHello+World+Technologies!8m2!3d28.4210176!4d70.3310118!9m1!1b1!16s%2Fg%2F11c5gbm7d0!3m5!1s0x39375c0f3e943895:0xf236a8d6b01facb8!8m2!3d28.4210176!4d70.3310118!16s%2Fg%2F11c5gbm7d0?entry=ttu&g_ep=EgoyMDI0MDgyMS4wIKXMDSoASAFQAw%3D%3D"
             width="100%"
             height="300"
             allowFullScreen=""
