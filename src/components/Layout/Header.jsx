@@ -48,13 +48,13 @@ function Header() {
           {isMenuOpen ? (
             <FaTimes className="text-[#0DAFE6] text-2xl" />
           ) : (
-            <FaBars className="text-[#0DAFE6] text-2xl" />
+            <FaBars className="text-[#0DAFE6] text-3xl" />
           )}
         </button>
       </div>
 
       <ul
-        className={`flex gap-3 p-5 items-center text-[#0DAFE6] sm:flex ${
+        className={`flex gap-6 items-center text-[#0DAFE6] sm:flex ${
           isMenuOpen
             ? "flex flex-col absolute top-16 justify-end left-0 w-full bg-white p-4"
             : "hidden"
@@ -95,8 +95,8 @@ function Header() {
           onClick={() => setShowDropDown(!showDropDown)}
           className=" flex gap-2 items-center cursor-pointer"
         >
-          <FaUserGraduate className="text-[#0DAFE6] text-xl" />
-          <FaChevronDown className="text-sm" />
+          <FaUserGraduate className="text-[#0DAFE6] text-2xl" />
+          <FaChevronDown className="text-[1rem]" />
         </div>
         {showDropDown && (
           <DropDown
