@@ -3,7 +3,6 @@ import { WebHandler } from "../data/remote/WebHandler";
 import { URLS } from "../data/remote/URL";
 import Loader from "../components/General/Loader";
 import { FaSearch } from "react-icons/fa";
-import PaymentCard from "../components/PaymentCard";
 import CourseCard from "../components/CourseCard";
 
 
@@ -11,12 +10,12 @@ const Courses = () => {
   const [courses, setCourses] = useState([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [buy, setBuy] = useState(false)
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchData = async () => {
       try {
         setLoading(true);
@@ -37,13 +36,12 @@ const Courses = () => {
         setLoading(false);
       }
     };
-
     fetchData();
-  }, [page, searchQuery]); // Trigger fetchData on page or searchQuery change
+  }, [page, searchQuery]);
 
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
-    setPage(1); // Reset to the first page on search
+    setPage(1);
   };
 
   const handlePreviousPage = () => {
@@ -58,7 +56,7 @@ const Courses = () => {
   if (error) {
     return <div>Error loading courses. Please try again later.</div>;
   }
-  
+
 
   return (
     <div>
@@ -77,77 +75,7 @@ const Courses = () => {
           </div>
         </div>
         {courses.map((course) => (
-          <CourseCard course={course}/>
-          // <div
-          //   key={course.id}
-          //   className="bg-white shadow-lg border border-gray-300 rounded-lg p-6 font-roboto flex flex-col lg:flex-row gap-6 mb-6 mx-auto w-11/12 md:w-5/6 lg:w-9/12 items-center justify-around"
-          // >
-          //   <div className="flex flex-col lg:flex-row justify-center items-center gap-6 flex-grow">
-          //     <div className="lg:w-64 lg:h-64 w-full h-64 flex-shrink-0">
-          //       {course.data.details.img ? (
-          //         <img
-          //           className="w-full h-full object-cover rounded-lg"
-          //           src={course.data.details.img}
-          //           alt="course"
-          //         />
-          //       ) : (
-          //         <div className="bg-gray-200 shadow-inner w-full h-full rounded-lg flex items-center justify-center">
-          //           <FaUser className="text-6xl text-blue-300" />
-          //         </div>
-          //       )}
-          //     </div>
-
-          //     <div className="flex flex-col gap-4 w-full">
-          //       <div className="text-gray-700">
-          //         <h3 className="text-xl font-bold">{course.data.details.title}</h3>
-          //         <h2 className="text-sm text-gray-500">
-          //           {course.data.details.category}
-          //         </h2>
-          //       </div>
-
-          //       <div className="text-sm text-gray-600 flex flex-col gap-2">
-          //         <p>
-          //           <span className="font-bold text-[1rem]">Description:</span>{" "}
-          //           {course.data.description}
-          //         </p>
-          //         <p>
-          //           <span className="font-semibold">Duration:</span>{" "}
-          //           {convertTimestampToTime(course.data.duration)}
-          //         </p>
-          //       </div>
-          //     </div>
-          //   </div>
-
-          //   <div className="flex flex-col justify-between w-full lg:w-auto lg:ml-auto">
-          //     <div className="text-gray-600 flex flex-col gap-1">
-          //       <p className="whitespace-nowrap">
-          //         <span className="font-semibold">No of Reviews:</span>{" "}
-          //         {course.data.details.numOfReviews}
-          //       </p>
-          //       <p className="whitespace-nowrap">
-          //         <span className="font-semibold">Rating:</span>{" "}
-          //         {course.data.details.rating}
-          //       </p>
-          //       <p className="whitespace-nowrap">
-          //         <span className="text-blue-500">$</span>
-          //         {course.data.details.price}
-          //       </p>
-          //     </div>
-          //     {buy && <PaymentCard/>}
-          //     <div className="flex items-center justify-end gap-2 mt-4">
-          //       <button onClick={()=>setBuy(true)} className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out flex items-center">
-          //         <FaShoppingCart className="mr-2" />
-          //         Buy
-          //       </button>
-          //       <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out flex items-center">
-          //         <FaBookmark className="mr-2" />
-          //         Save
-          //       </button>
-          //     </div>
-          //   </div>
-          // </div>
-
-
+          <CourseCard course={course} />
         ))}
         {loading ? null : <div className="flex mx-10 my-8 justify-between items-center mt-4">
           <button

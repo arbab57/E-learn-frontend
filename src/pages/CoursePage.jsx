@@ -10,17 +10,13 @@ const CoursePage = () => {
   const [videoId, setVideoId] = useState("");
   const [showVideo, setShowVideo] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [courseId, setCourseId] = useState(()=> {
-  const id =  JSON.parse(localStorage.getItem("courseId"))
-  return id;
-  })
-
- 
-
-
+  const [courseId, setCourseId] = useState(() => {
+    const id = JSON.parse(localStorage.getItem("courseId"));
+    return id;
+  });
 
   useEffect(() => {
-    window.scrollTo(0,0)
+    window.scrollTo(0, 0);
     const fetchData = async () => {
       setLoading(true);
       const { response, status } = await WebHandler(
@@ -43,7 +39,7 @@ const CoursePage = () => {
     const minutes = Math.floor((duration % 3600000) / 60000);
     return `${hours}h ${minutes}m`;
   };
-  console.log(courseId)
+  console.log(courseId);
 
   return (
     <>
