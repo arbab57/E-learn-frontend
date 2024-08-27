@@ -5,17 +5,15 @@ import { useNavigate } from "react-router-dom";
 import { WebHandler } from "../../data/remote/WebHandler";
 import { URLS } from "../../data/remote/URL";
 import Toast from "../General/Toast";
-import { Context } from "../../Context/Context";
+
 
 
 const FeatureCard = ({ course }) => {
   const navigate = useNavigate();
 
-  const {courseId , setCourseId} = useContext(Context)
   const handleClick = () => {
     localStorage.removeItem("courseId")
     localStorage.setItem("courseId" , JSON.stringify(course.id))
-    setCourseId(course.id)
     navigate("/course-details")
   }
 
