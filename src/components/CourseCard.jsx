@@ -3,6 +3,7 @@ import { FaUser, FaShoppingCart, FaBookmark } from "react-icons/fa";
 import PaymentCard from './PaymentCard';
 
 
+
 const CourseCard = ({course}) => {
     
     const [showBuy, setShowBuy] = useState(false)

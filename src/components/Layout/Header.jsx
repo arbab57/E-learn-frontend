@@ -54,7 +54,7 @@ function Header() {
       </div>
 
       <ul
-        className={`flex gap-5 items-center text-[#0DAFE6] sm:flex ${
+        className={`flex gap-3 p-5 items-center text-[#0DAFE6] sm:flex ${
           isMenuOpen
             ? "flex flex-col absolute top-16 justify-end left-0 w-full bg-white p-4"
             : "hidden"
@@ -63,16 +63,16 @@ function Header() {
         <li>
           <NavLink
             exact
-            className="hover:text-[#0c8ab8]"
+            className="text-[#0c8ab8] hover:bg-[#0DAFE6] hover:text-white px-4 py-2"
             to="/"
-            activeClassName="text-[#0c8ab8]"
+            activeClassName="text-[#0c8ab8] "
           >
             Home
           </NavLink>
         </li>
         <li>
           <NavLink
-            className="hover:text-[#0c8ab8]"
+             className="text-[#0c8ab8] hover:bg-[#0DAFE6] hover:text-white px-4 py-2"
             to="/courses"
             activeClassName="text-[#0c8ab8]"
           >
@@ -81,7 +81,7 @@ function Header() {
         </li>
         <li>
           <NavLink
-            className="hover:text-[#0c8ab8]"
+            className="text-[#0c8ab8] hover:bg-[#0DAFE6] hover:text-white px-4 py-2"
             to="/contact-us"
             activeClassName="text-[#0c8ab8]"
           >
