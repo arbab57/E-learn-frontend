@@ -4,6 +4,7 @@ export const URLS = {
     CHECK: BASE_URL + 'auth/check',
     REGISTER: BASE_URL + 'auth/register',
     LOGIN: BASE_URL + 'auth/login',
+    USERDETAILS: BASE_URL + "auth/user-details",
     SIGNOUT: BASE_URL + 'auth/signout',
     GETOTP: BASE_URL + 'auth/request-otp',
     RESETPASSWORD: BASE_URL + 'auth/reset-password',
