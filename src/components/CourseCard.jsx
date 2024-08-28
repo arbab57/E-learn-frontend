@@ -15,6 +15,8 @@ const CourseCard = ({ course }) => {
     const [showToast, setShowToast] = useState(false);
     const [severity, setSeverity] = useState(false);
     const [isSaved, setIsSaved] = useState(false);
+    const [showSaved, setShowSaved] = useState(false)
+    const [bought, setBought] = useState(false)
     const [res, setres] = useState();
 
     const convertTimestampToTime = (timeInMS) => {
@@ -57,6 +59,27 @@ const CourseCard = ({ course }) => {
         };
         fetchData();
     }, [course.id]);
+
+
+    useEffect(() => {
+        const checkSaved = async () => {
+            const { response, status } = await WebHandler(`${URLS.CHECKSAVED}${course.id}`, "POST");
+            if (status === 200) {
+                setShowSaved(true)
+            }
+        }
+        checkSaved()
+    }, [])
+
+    useEffect(() => {
+        const checkBought = async () => {
+            const { response, status } = await WebHandler(`${URLS.CHECKBOUGHT}${course.id}`, "GET");
+            if (status === 200) {
+                setBought(true)
+            }
+        }
+        checkBought()
+    }, [])
 
     const handleClick = () => {
         localStorage.removeItem("courseId")
@@ -125,13 +148,24 @@ const CourseCard = ({ course }) => {
                     </div>
                     {showBuy && <PaymentCard courseId={course.id} course={course.data.details} setShowBuy={setShowBuy} />}
                     <div className="flex items-center justify-end gap-2 mt-4">
-                        <button onClick={() => setShowBuy(true)} className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out flex items-center">
-                            <FaShoppingCart className="mr-2" />
-                            Buy
-                        </button>
-                        <button onClick={saveCourse} className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out flex items-center">
+                        {!bought && (
+                            <button
+                                onClick={() => setShowBuy(true)}
+                                className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out flex items-center"
+                            >
+                                <FaShoppingCart className="mr-2" />
+                                Buy
+                            </button>
+                        )}
+
+                        <button
+                            onClick={saveCourse}
+                            className={`${showSaved ? 'bg-gray-500' : 'bg-green-500 hover:bg-green-600'
+                                } text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out flex items-center`}
+                            disabled={showSaved}
+                        >
                             <FaBookmark className="mr-2" />
-                            {isSaved ? 'Saved' : 'Save'}
+                            {showSaved ? 'Saved' : 'Save'}
                         </button>
                     </div>
                 </div>
@@ -141,70 +175,3 @@ const CourseCard = ({ course }) => {
 }
 
 export default CourseCard
-
-
-
-// import React, { useState, useEffect } from 'react';
-// import { WebHandler } from '../data/remote/WebHandler';
-// import { URLS } from '../data/remote/URL';
-// import CourseCard from './CourseCard';
-
-// const CourseList = () => {
-//     const [courses, setCourses] = useState([]);
-//     const [savedCourses, setSavedCourses] = useState([]);
-
-//     useEffect(() => {
-//         const fetchCourses = async () => {
-//             try {
-//                 const { response, status } = await WebHandler(URLS.ALLCOURSES, "GET");
-//                 if (status === 200 && Array.isArray(response)) {
-//                     setCourses(response);
-//                 } else {
-//                     console.error("Unexpected response format:", response);
-//                 }
-//             } catch (error) {
-//                 console.error("Error fetching courses:", error);
-//             }
-//         };
-
-//         const fetchSavedCourses = async () => {
-//             try {
-//                 const { response, status } = await WebHandler(URLS.SAVEDCOURSES, "GET");
-//                 if (status === 200 && Array.isArray(response)) {
-//                     const savedCourseIds = response.map(course => course._id);
-//                     setSavedCourses(savedCourseIds);
-//                     localStorage.setItem('savedCourses', JSON.stringify(savedCourseIds));
-//                 } else {
-//                     console.error("Unexpected response format:", response);
-//                 }
-//             } catch (error) {
-//                 console.error("Error fetching saved courses:", error);
-//             }
-//         };
-
-//         fetchCourses();
-//         fetchSavedCourses();
-//     }, []);
-
-//     const handleSaveStatusChange = (courseId, isSaved) => {
-//         if (isSaved) {
-//             setSavedCourses(prev => [...prev, courseId]);
-//         } else {
-//             setSavedCourses(prev => prev.filter(id => id !== courseId));
-//         }
-//     };
-
-//     return (
-//         <div>
-//             {courses.map(course => (
-//                 <CourseCard 
-//                     key={course._id} 
-//                     course={course} 
-//                     onSaveStatusChange={handleSaveStatusChange}
-//                 />
-//             ))}
-//         </div>
-//     );
-// };
-
-// export default CourseList;

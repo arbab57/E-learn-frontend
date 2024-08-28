@@ -1,11 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { MdAccessTimeFilled, MdPlayLesson } from "react-icons/md";
 import { GiSaveArrow } from "react-icons/gi";
 import { useNavigate } from "react-router-dom";
 import { WebHandler } from "../../data/remote/WebHandler";
 import { URLS } from "../../data/remote/URL";
 import Toast from "../General/Toast";
-
 
 
 const FeatureCard = ({ course }) => {
@@ -17,10 +16,10 @@ const FeatureCard = ({ course }) => {
     navigate("/course-details")
   }
 
-
   const [res, setres] = useState();
   const [showToast, setShowToast] = useState(false);
   const [severity, setSeverity] = useState(false);
+  const [showSaved, setShowSaved] = useState(false)
 
   const truncateTitle = (title, length = 20) => {
     if (title.length > length) {
@@ -45,6 +44,16 @@ const FeatureCard = ({ course }) => {
     }
   };
 
+  useEffect(() => {
+    const checkSaved = async () => {
+        const { response, status } = await WebHandler(`${URLS.CHECKSAVED}${course.id}`, "POST");
+        if (status === 200) {
+            setShowSaved(true)
+        }
+    }
+    checkSaved()
+}, [])
+
   return (
     <>
       {showToast && (
@@ -52,12 +61,13 @@ const FeatureCard = ({ course }) => {
       )}
       <div className="col-span-1 pb-4 h-80 flex flex-col justify-between rounded-lg border border-gray-300 transition hover:scale-105 hover:shadow-xl shadow-md bg-white hover:bg-gradient-to-br from-blue-50 to-blue-100 relative">
         {/* Save Course Icon */}
+        {showSaved &&
         <div
           onClick={saveCourse}
           className="absolute top-3 right-3 bg-white rounded-full p-2 shadow-md hover:bg-blue-100 transition-colors cursor-pointer z-20"
         >
           <GiSaveArrow className="hover:fill-blue-500 text-[#0DAFE6] transition-colors" />
-        </div>
+        </div>}
 
         {/* Course Image */}
         <div className="h-36 overflow-hidden rounded-t-lg relative">

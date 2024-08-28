@@ -90,7 +90,6 @@ const PaymentCard = ({ courseId, course, setShowBuy }) => {
                   </label>
                   <input
                     name="cardNumber"
-
                     id="cardNumber"
                     type="number"
                     className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:border-[#0DAFE6]"

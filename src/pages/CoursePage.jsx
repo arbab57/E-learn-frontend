@@ -1,15 +1,18 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaStar, FaUser } from "react-icons/fa";
 import { WebHandler } from "../data/remote/WebHandler";
 import { URLS } from "../data/remote/URL";
 import VideoPlayer from "../components/videoPlayer";
 import Loader from "../components/General/Loader";
+import PaymentCard from "../components/PaymentCard";
 
 const CoursePage = () => {
   const [course, setCourse] = useState(null);
   const [videoId, setVideoId] = useState("");
   const [showVideo, setShowVideo] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [bought, setBought] = useState(false)
+  const [showBuy, setShowBuy] = useState(false)
   const [courseId, setCourseId] = useState(() => {
     const id = JSON.parse(localStorage.getItem("courseId"));
     return id;
@@ -29,6 +32,17 @@ const CoursePage = () => {
     fetchData();
   }, []);
 
+
+  useEffect(() => {
+    const checkBought = async () => {
+      const { response, status } = await WebHandler(`${URLS.CHECKBOUGHT}${courseId}`, "GET");
+      if (status === 200) {
+        setBought(true)
+      }
+    }
+    checkBought()
+  }, [])
+
   const getVideo = (id) => {
     setVideoId(id);
     setShowVideo(true);
@@ -39,7 +53,6 @@ const CoursePage = () => {
     const minutes = Math.floor((duration % 3600000) / 60000);
     return `${hours}h ${minutes}m`;
   };
-  console.log(courseId);
 
   return (
     <>
@@ -76,10 +89,12 @@ const CoursePage = () => {
                   ({course.data.details.numOfReviews} Reviews)
                 </span>
               </div>
+              {showBuy && <PaymentCard courseId={course.id} course={course.data.details} setShowBuy={setShowBuy} />}
               <div className="mt-6">
-                <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">
-                  Buy Course
-                </button>
+                {!bought &&
+                  <button onClick={() => setShowBuy(true)} className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">
+                    Buy Course
+                  </button>}
               </div>
             </div>
           </div>
