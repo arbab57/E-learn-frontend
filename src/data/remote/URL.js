@@ -18,5 +18,5 @@ export const URLS = {
     BOUGHTCOURSES: BASE_URL + 'courses/bought-courses',
     FEATURED: BASE_URL + 'courses/featured',
     COURSES: BASE_URL + 'courses/search',
-
+    ADDREVIEW: BASE_URL + 'courses/reviews/'
 }

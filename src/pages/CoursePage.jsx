@@ -5,6 +5,7 @@ import { URLS } from "../data/remote/URL";
 import VideoPlayer from "../components/videoPlayer";
 import Loader from "../components/General/Loader";
 import PaymentCard from "../components/PaymentCard";
+import StarRating from "../components/General/Starrating";
 
 const CoursePage = () => {
   const [course, setCourse] = useState(null);
@@ -13,6 +14,7 @@ const CoursePage = () => {
   const [loading, setLoading] = useState(false);
   const [bought, setBought] = useState(false)
   const [showBuy, setShowBuy] = useState(false)
+  const [review, setReview] = useState(false)
   const [courseId, setCourseId] = useState(() => {
     const id = JSON.parse(localStorage.getItem("courseId"));
     return id;
@@ -30,7 +32,7 @@ const CoursePage = () => {
       setLoading(false);
     };
     fetchData();
-  }, []);
+  }, [review]);
 
 
   useEffect(() => {
@@ -57,7 +59,7 @@ const CoursePage = () => {
   return (
     <>
       {loading && <Loader />}
-      <div className="max-w-6xl mx-auto px-4 py-8 min-h-screen cursor-pointer">
+      <div className="max-w-6xl mx-auto px-4 py-8 min-h-screen">
         {course && (
           <div className="flex flex-col md:flex-row gap-8">
             <div className="md:w-1/2">
@@ -122,7 +124,7 @@ const CoursePage = () => {
           />
         )}
         {course && (
-          <div className="mt-12">
+          <div className="mt-12 cursor-pointer">
             <h2 className="text-2xl font-bold text-gray-800">Lessons</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4">
               {course.data.lessons.map((lesson, index) => (
@@ -149,9 +151,11 @@ const CoursePage = () => {
           </div>
         )}
         {/* Reviews Section */}
+
         {course && (
           <div className="mt-12">
             <h2 className="text-2xl font-bold text-gray-800">Reviews</h2>
+            {bought && <StarRating setReview={setReview} courseId={courseId} />}
             <div className="mt-4 space-y-6">
               {course.data.reviews.map((review, index) => (
                 <div
@@ -160,7 +164,7 @@ const CoursePage = () => {
                 >
                   <div className="flex items-center gap-2">
                     <FaUser className="text-gray-500" />
-                    <p className="font-semibold">{review.user.name}</p>
+                    <p className="font-semibold">{review?.user?.name}</p>
                     <div className="flex items-center gap-1">
                       <FaStar className="text-yellow-500" />
                       <span className="text-sm text-gray-600">
