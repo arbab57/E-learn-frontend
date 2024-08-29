@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { WebHandler, WebHandler2 } from "../../data/remote/WebHandler";
+import { WebHandler } from "../../data/remote/WebHandler";
 
 import { URLS } from "../../data/remote/URL";
 import useClickOutside from "../../Hooks/UseClickOutside";
@@ -69,7 +69,6 @@ const UserDetails = ({ setSetting }) => {
 
   const onClose = () => {
     setSetting(false);
-    navigate("/user-details");
   };
 
   return (
@@ -132,26 +131,26 @@ const UserDetails = ({ setSetting }) => {
                       name="password"
                       value={formData.password}
                       onChange={handleChange}
-                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      className="shadow appearance-none border rounded w-full py-2 px-3 text- hover:bg-white leading-tight focus:outline-none focus:shadow-outline"
                     />
                   </div>
                   <div className="flex items-center justify-between">
                     <button
                       type="submit"
-                      className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                      className="text-[#0DAFE6] hover:text-white  hover:bg-[#0DAFE6]   font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     >
                       Save Changes
                     </button>
                     <button
                       type="button"
                       onClick={onClose}
-                      className="text-indigo-500 hover:text-indigo-700 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                      className="text-[#0DAFE6] hover:text-white  hover:bg-[#0DAFE6] font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     >
                       Cancel
                     </button>
                   </div>
                 </form>
-                {message && <p className="mt-4 text-indigo-500">{message}</p>}
+                {message && <p className="mt-4 text-[#0DAFE6]">{message}</p>}
               </div>
             </div>
           </div>
