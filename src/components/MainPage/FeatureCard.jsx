@@ -1,25 +1,26 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdAccessTimeFilled, MdPlayLesson } from "react-icons/md";
-import { GiSaveArrow } from "react-icons/gi";
+import { GoBookmarkFill,GoBookmarkSlashFill } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
 import { WebHandler } from "../../data/remote/WebHandler";
 import { URLS } from "../../data/remote/URL";
 import Toast from "../General/Toast";
 
 
-const FeatureCard = ({ course }) => {
+const FeatureCard = ({ course ,setReFetcAhll }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
     localStorage.removeItem("courseId")
-    localStorage.setItem("courseId" , JSON.stringify(course.id))
+    localStorage.setItem("courseId", JSON.stringify(course.id))
     navigate("/course-details")
   }
 
-  const [res, setres] = useState();
+  const [message, setMessage] = useState("")
   const [showToast, setShowToast] = useState(false);
   const [severity, setSeverity] = useState(false);
-  const [showSaved, setShowSaved] = useState(false)
+  const [saved, setSaved] = useState(false)
+  const [reFetch, setReFetch] = useState(true)
 
   const truncateTitle = (title, length = 20) => {
     if (title.length > length) {
@@ -36,38 +37,62 @@ const FeatureCard = ({ course }) => {
     if (status === 200) {
       setSeverity("success");
       setShowToast(true);
-      setres(response.message);
+      setReFetch((prev) => !prev)
+      setMessage(response.message);
+      setReFetcAhll((prev) => !prev)
     } else {
       setSeverity("danger");
       setShowToast(true);
-      setres(response.message);
+      setMessage(response.message);
+      setReFetcAhll((prev) => !prev)
+    }
+  };
+
+  const removSavedCourse = async () => {
+    const { response, status } = await WebHandler(
+      `${URLS.REMOVEDSAVED}${course.id}`,
+      "DELETE"
+    );
+    if (status === 200) {
+      setSeverity("success");
+      setShowToast(true);
+      setReFetch((prev) => !prev)
+      setMessage(response.message);
+      setReFetcAhll((prev) => !prev)
     }
   };
 
   useEffect(() => {
     const checkSaved = async () => {
-        const { response, status } = await WebHandler(`${URLS.CHECKSAVED}${course.id}`, "POST");
-        if (status === 200) {
-            setShowSaved(true)
-        }
+      const { response, status } = await WebHandler(`${URLS.CHECKSAVED}${course.id}`, "POST");
+      if (status === 200) {
+        setSaved(true)
+      }else{
+        setSaved(false)
+      }
     }
     checkSaved()
-}, [])
+  }, [reFetch])
 
   return (
     <>
       {showToast && (
-        <Toast message={res} severity={severity} onClose={setShowToast} />
+        <Toast message={message} severity={severity} onClose={setShowToast} />
       )}
       <div className="col-span-1 pb-4 h-80 flex flex-col justify-between rounded-lg border border-gray-300 transition hover:scale-105 hover:shadow-xl shadow-md bg-white hover:bg-gradient-to-br from-blue-50 to-blue-100 relative">
         {/* Save Course Icon */}
-        {showSaved &&
-        <div
-          onClick={saveCourse}
-          className="absolute top-3 right-3 bg-white rounded-full p-2 shadow-md hover:bg-blue-100 transition-colors cursor-pointer z-20"
-        >
-          <GiSaveArrow className="hover:fill-blue-500 text-[#0DAFE6] transition-colors" />
-        </div>}
+        {!saved ?
+          <div
+            onClick={saveCourse}
+            className="absolute top-3 right-3 bg-white rounded-full p-2 shadow-md hover:bg-blue-100 transition-colors cursor-pointer z-20"
+          >
+            <GoBookmarkFill className="hover:fill-blue-500 text-[#0DAFE6] transition-colors" /> 
+          </div> : <div
+            onClick={removSavedCourse}
+            className="absolute top-3 right-3 bg-white rounded-full p-2 shadow-md hover:bg-blue-100 transition-colors cursor-pointer z-20"
+          >
+            <GoBookmarkSlashFill className="hover:fill-blue-500 text-[#0DAFE6] transition-colors" />
+          </div>}
 
         {/* Course Image */}
         <div className="h-36 overflow-hidden rounded-t-lg relative">
@@ -80,7 +105,7 @@ const FeatureCard = ({ course }) => {
 
         {/* Course Details */}
         <div
-          onClick={() => {handleClick()}}
+          onClick={() => { handleClick() }}
           className="p-4 flex flex-col justify-between flex-grow cursor-pointer"
         >
           <div>

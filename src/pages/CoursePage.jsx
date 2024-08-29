@@ -57,7 +57,7 @@ const CoursePage = () => {
   return (
     <>
       {loading && <Loader />}
-      <div className="max-w-6xl mx-auto px-4 py-8 min-h-screen">
+      <div className="max-w-6xl mx-auto px-4 py-8 min-h-screen cursor-pointer">
         {course && (
           <div className="flex flex-col md:flex-row gap-8">
             <div className="md:w-1/2">

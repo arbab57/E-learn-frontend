@@ -10,6 +10,7 @@ export const URLS = {
     CHANGEPASSWORD: BASE_URL + 'auth/change-password',
     SAVENEWCOURSE: BASE_URL + 'courses/saved/',
     CHECKSAVED: BASE_URL+ 'courses/checksaved/',
+    REMOVEDSAVED: BASE_URL + 'courses/saved/',
     SAVEDCOURSES: BASE_URL + 'courses/saved',
     GETCOURSEBYID: BASE_URL + 'courses/get/',
     BUYCOURSE: BASE_URL  + 'courses/bought-courses/',

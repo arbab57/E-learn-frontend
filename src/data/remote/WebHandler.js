@@ -11,6 +11,6 @@ export const WebHandler = async (url, verb, params) => {
         const response = await data.json()
         return { response, status }
     } catch (error) {
-        return error
+        return error.message
     }
 }
