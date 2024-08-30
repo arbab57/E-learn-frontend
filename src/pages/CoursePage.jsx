@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { WebHandler } from "../data/remote/WebHandler";
 import { URLS } from "../data/remote/URL";
-import VideoPlayer from "../components/VideoPlayer"
 import Loader from "../components/General/Loader";
 import PaymentCard from "../components/PaymentCard";
 import StarRating from "../components/General/Starrating";
 import Review from "../components/Review";
+import VideoPlayer from "../components/VideoPlayer";
 
 const CoursePage = () => {
   const [course, setCourse] = useState(null);
