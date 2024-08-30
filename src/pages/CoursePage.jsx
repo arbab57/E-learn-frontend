@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { FaStar, FaUser, FaTrash } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 import { WebHandler } from "../data/remote/WebHandler";
 import { URLS } from "../data/remote/URL";
-import VideoPlayer from "../components/videoPlayer";
+import VideoPlayer from "../components/VideoPlayer"
 import Loader from "../components/General/Loader";
 import PaymentCard from "../components/PaymentCard";
 import StarRating from "../components/General/Starrating";
