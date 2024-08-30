@@ -1,7 +1,35 @@
 import React from "react";
 
 const ContactUs = () => {
-   
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const obj = Object.fromEntries(formData.entries());
+
+    try {
+      // You can replace the URL with your backend endpoint
+      const response = await fetch('http://localhost:3000/auth/comment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(obj),
+      });
+
+      if (response.ok) {
+        // Handle success (e.g., show a success message)
+        alert('Your message has been sent successfully!');
+      } else {
+        // Handle failure (e.g., show an error message)
+        alert('Failed to send your message. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error submitting the form:', error);
+      alert('An error occurred while sending your message.');
+    }
+  };
+
   return (
     <div className="max-w-4xl mx-auto p-12 mt-9">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -43,22 +71,25 @@ const ContactUs = () => {
       {/* Contact Form */}
       <div className="mt-8">
         <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <input
               type="text"
+              name="name"  // Added name attribute
               placeholder="Name*"
               className="border p-2 rounded-md w-full"
               required
             />
             <input
               type="email"
+              name="email"  // Added name attribute
               placeholder="Email*"
               className="border p-2 rounded-md w-full"
               required
             />
           </div>
           <textarea
+            name="comment"  // Added name attribute
             placeholder="Comment"
             className="border p-2 rounded-md w-full mb-4"
             rows="4"
