@@ -7,7 +7,7 @@ import Loader from "./General/Loader";
 
 
 
-const PaymentCard = ({ courseId, course, setShowBuy }) => {
+const PaymentCard = ({ courseId, course, setShowBuy, setBuy }) => {
   console.log(courseId)
 
   const modalRef = useRef(null);
@@ -30,10 +30,11 @@ const PaymentCard = ({ courseId, course, setShowBuy }) => {
     const body = JSON.stringify(obj);
     const { response, status } = await WebHandler(`${URLS.BUYCOURSE}${courseId}`, 'POST', body)
     if (status === 200) {
-      setSeverity("green")
-      setShowToast(true) 
+      setSeverity("Success")
+      setShowToast(true)
       setRes(response.message)
       setLoading(false)
+      setBuy(true)
     } else {
       setSeverity("warning")
       setShowToast(true)
@@ -45,7 +46,7 @@ const PaymentCard = ({ courseId, course, setShowBuy }) => {
 
   return (
     <>
-  {loading && <Loader/>}
+      {loading && <Loader />}
       {showToast && (
         <Toast message={res} severity={severity} onClose={setShowToast} />
       )}

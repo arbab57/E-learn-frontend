@@ -5,7 +5,6 @@ import Loader from "../components/General/Loader";
 import { FaSearch } from "react-icons/fa";
 import CourseCard from "../components/CourseCard";
 
-
 const Courses = () => {
   const [courses, setCourses] = useState([]);
   const [error, setError] = useState(false);
@@ -56,7 +55,6 @@ const Courses = () => {
   if (error) {
     return <div>Error loading courses. Please try again later.</div>;
   }
-
 
   return (
     <div>

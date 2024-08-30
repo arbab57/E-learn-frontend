@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { FaStar, FaUser } from "react-icons/fa";
+import { FaStar, FaUser, FaTrash } from "react-icons/fa";
 import { WebHandler } from "../data/remote/WebHandler";
 import { URLS } from "../data/remote/URL";
 import VideoPlayer from "../components/videoPlayer";
 import Loader from "../components/General/Loader";
 import PaymentCard from "../components/PaymentCard";
 import StarRating from "../components/General/Starrating";
+import Review from "../components/Review";
 
 const CoursePage = () => {
   const [course, setCourse] = useState(null);
@@ -14,7 +15,9 @@ const CoursePage = () => {
   const [loading, setLoading] = useState(false);
   const [bought, setBought] = useState(false)
   const [showBuy, setShowBuy] = useState(false)
+  const [buy, setBuy] = useState(false)
   const [review, setReview] = useState(false)
+  const [delRev, setDelRev] = useState(false)
   const [courseId, setCourseId] = useState(() => {
     const id = JSON.parse(localStorage.getItem("courseId"));
     return id;
@@ -32,8 +35,7 @@ const CoursePage = () => {
       setLoading(false);
     };
     fetchData();
-  }, [review]);
-
+  }, [review, delRev, buy]);
 
   useEffect(() => {
     const checkBought = async () => {
@@ -44,6 +46,7 @@ const CoursePage = () => {
     }
     checkBought()
   }, [])
+
 
   const getVideo = (id) => {
     setVideoId(id);
@@ -64,34 +67,34 @@ const CoursePage = () => {
           <div className="flex flex-col md:flex-row gap-8">
             <div className="md:w-1/2">
               <img
-                src={course.data.details.img}
-                alt={course.data.details.title}
+                src={course?.data?.details.img}
+                alt={course?.data?.details.title}
                 className="rounded-lg shadow-lg w-full object-cover h-64 md:h-full"
               />
             </div>
             <div className="md:w-1/2">
               <h1 className="text-3xl font-bold text-gray-800">
-                {course.data.details.title}
+                {course?.data?.details.title}
               </h1>
               <p className="text-lg text-gray-600 mt-2">
-                {course.data.details.category}
+                {course?.data?.details.category}
               </p>
-              <p className="mt-4 text-gray-700">{course.data.description}</p>
+              <p className="mt-4 text-gray-700">{course?.data?.description}</p>
               <p className="mt-6 text-xl font-semibold text-blue-600">
-                ${course.data.details.price}
+                ${course?.data?.details.price}
               </p>
               <div className="flex items-center mt-4">
                 <div className="flex items-center gap-1">
                   <FaStar className="text-yellow-500" />
                   <span className="font-medium">
-                    {course.data.details.rating}
+                    {course?.data?.details.rating}
                   </span>
                 </div>
                 <span className="ml-2 text-gray-500">
-                  ({course.data.details.numOfReviews} Reviews)
+                  ({course?.data?.details.numOfReviews} Reviews)
                 </span>
               </div>
-              {showBuy && <PaymentCard courseId={course.id} course={course.data.details} setShowBuy={setShowBuy} />}
+              {showBuy && <PaymentCard courseId={course.id} setBuy={setBuy} course={course?.data?.details} setShowBuy={setShowBuy} />}
               <div className="mt-6">
                 {!bought &&
                   <button onClick={() => setShowBuy(true)} className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">
@@ -151,29 +154,13 @@ const CoursePage = () => {
           </div>
         )}
         {/* Reviews Section */}
-
         {course && (
           <div className="mt-12">
             <h2 className="text-2xl font-bold text-gray-800">Reviews</h2>
             {bought && <StarRating setReview={setReview} courseId={courseId} />}
             <div className="mt-4 space-y-6">
               {course.data.reviews.map((review, index) => (
-                <div
-                  key={index}
-                  className="p-4 border rounded-lg shadow-md hover:shadow-lg"
-                >
-                  <div className="flex items-center gap-2">
-                    <FaUser className="text-gray-500" />
-                    <p className="font-semibold">{review?.user?.name}</p>
-                    <div className="flex items-center gap-1">
-                      <FaStar className="text-yellow-500" />
-                      <span className="text-sm text-gray-600">
-                        {review.rating}
-                      </span>
-                    </div>
-                  </div>
-                  <p className="mt-2 text-gray-700">{review.review}</p>
-                </div>
+                <Review review={review} setDelRev={setDelRev} courseId={courseId} index={index} />
               ))}
             </div>
           </div>

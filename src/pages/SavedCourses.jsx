@@ -5,9 +5,9 @@ import { URLS } from "../data/remote/URL";
 import Loader from "../components/General/Loader";
 
 const SavedCourses = () => {
-  const [savedCourses, setSavedCourses] = useState([]); // Rename to a more descriptive name
-  const [loading, setLoading] = useState(true); // Default to true to indicate loading
-  const [shouldFetch, setShouldFetch] = useState(true); // Correctly named
+  const [savedCourses, setSavedCourses] = useState([]); 
+  const [loading, setLoading] = useState(true); 
+  const [shouldFetch, setShouldFetch] = useState(true); 
 
   const fetchData = useCallback(async () => {
     try {
@@ -16,10 +16,10 @@ const SavedCourses = () => {
       if (status === 200 && Array.isArray(response)) {
         setSavedCourses(response);
       } else {
-        setSavedCourses([]); // Set to empty array if there's no data or an error
+        setSavedCourses([]); 
       }
     } catch (error) {
-      setSavedCourses([]); // Set to empty array on error
+      setSavedCourses([]); 
     } finally {
       setLoading(false);
     }
@@ -28,7 +28,7 @@ const SavedCourses = () => {
   useEffect(() => {
     if (shouldFetch) {
       fetchData();
-      setShouldFetch(false); // Reset shouldFetch after fetching data
+      setShouldFetch(false); 
     }
   }, [shouldFetch, fetchData]);
 

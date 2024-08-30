@@ -1,7 +1,7 @@
 import React from "react";
 
 const ContactUs = () => {
-   
+
   return (
     <div className="max-w-4xl mx-auto p-12 mt-9">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

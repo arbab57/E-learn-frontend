@@ -1,68 +1,3 @@
-// import React, { useEffect, useState } from "react";
-// import { WebHandler } from "../data/remote/WebHandler";
-// import Loader from "./General/Loader";
-
-// const VideoPlayer = ({ setShowVideo, videoId, courseId }) => {
-//   const [video, setvideo] = useState("");
-//   const [res, setRes] = useState("")
-//   const [Loading, setLoading] = useState(false);
-
-//   const base_url = import.meta.env.VITE_URL;
-
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       setLoading(true);
-//       const { response, status } = await WebHandler(
-//         `${base_url}/courses/${courseId}/video/${videoId}`,
-//         "GET"
-//       );
-//       if (status === 200) {
-//         setLoading(false);
-//         setvideo(response.link);
-//       }else{
-//         setRes(response.message)
-//         setLoading(false);
-//       }
-//     };
-//     fetchData();
-//   }, []);
-
-//   return (
-//     <>
-//     {Loading && <Loader/>}
-//     <div className=" z-50 fixed top-0 left-0 bg-black bg-opacity-45 flex items-center justify-center w-screen h-screen">
-//       <div className="h-{80} w-[60%] bg-white p-6 ">
-//         <div className="flex justify-end p-2">
-//           <div
-//             onClick={() => setShowVideo(false)}
-//             className="p-1 cursor-pointer bg-red-300 text-white text-xl"
-//           >
-//             X
-//           </div>
-//         </div>
-//         {Loading ? (
-//           <Loader />
-//         ) : (
-//           <iframe
-//             width="100%"
-//             height="315"
-//             src={video}
-//             title="YouTube video player"
-//             frameborder="0"
-//             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-//             referrerpolicy="strict-origin-when-cross-origin"
-//             allowfullscreen
-//           ></iframe>
-//         )}
-//       </div>
-//     </div>
-//     </>
-//   );
-// };
-
-// export default VideoPlayer;
-
-
 import React, { useEffect, useState } from "react";
 import { WebHandler } from "../data/remote/WebHandler";
 import Loader from "./General/Loader";
@@ -81,6 +16,7 @@ const VideoPlayer = ({ setShowVideo, videoId, courseId }) => {
         `${base_url}/courses/${courseId}/video/${videoId}`,
         "GET"
       );
+      console.log(response)
       if (status === 200) {
         setLoading(false);
         setVideo(response.link);
@@ -95,37 +31,46 @@ const VideoPlayer = ({ setShowVideo, videoId, courseId }) => {
   return (
     <>
       {loading && <Loader />}
-      <div className="z-50 fixed top-0 left-0 bg-black bg-opacity-45 flex items-center justify-center w-screen h-screen">
-        <div className="h-80 w-[60%] bg-white p-6">
-          <div className="flex justify-end p-2">
-            <div
-              onClick={() => setShowVideo(false)}
-              className="p-1 cursor-pointer bg-red-300 text-white text-xl"
-            >
-              X
-            </div>
-          </div>
-          {loading ? (
-            <Loader />
-          ) : message ? (
-            <div className="p-4 text-center">
-              <h2>{message}</h2>
-              <p>Please buy the course to access the video.</p>
-            </div>
-          ) : (
-            <iframe
-              width="100%"
-              height="315"
-              src={video}
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            ></iframe>
-          )}
-        </div>
+      <div className="z-50 fixed top-0 left-0 flex items-center justify-center w-screen h-screen bg-black bg-opacity-50 transition-opacity duration-300 ease-in-out">
+  <div className="relative w-full max-w-2xl md:max-w-3xl lg:max-w-4xl bg-white rounded-lg shadow-lg p-6 overflow-hidden">
+    {/* Close Button */}
+    <div className="absolute top-4 right-4">
+      <button
+        onClick={() => setShowVideo(false)}
+        className="p-2 rounded-full bg-red-500 text-white text-lg font-bold hover:bg-red-600 transition-colors duration-300"
+      >
+        X
+      </button>
+    </div>
+
+    {/* Content */}
+    {loading ? (
+      <div className="flex justify-center items-center h-48">
+        <Loader />
       </div>
+    ) : message ? (
+      <div className="flex flex-col items-center justify-center h-full text-center space-y-4">
+        <h2 className="text-2xl font-semibold text-gray-800">{message}</h2>
+        <p className="text-gray-600">Please buy the course to access the video.</p>
+      </div>
+    ) : (
+      <div className="w-full h-72 md:h-96 lg:h-[500px]">
+        <iframe
+          width="100%"
+          height="100%"
+          src={video}
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+          className="rounded-lg shadow-md"
+        ></iframe>
+      </div>
+    )}
+  </div>
+</div>
+
     </>
   );
 };

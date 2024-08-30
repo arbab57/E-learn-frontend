@@ -11,14 +11,37 @@ const Register = () => {
 
   const [showToast, setShowToast] = useState(false);
   const [loader, setLoader] = useState(false);
-  const [severity, setSeverity] = useState(false);
+  const [severity, setSeverity] = useState("");
   const [res, setRes] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [emailError, setEmailError] = useState("");
+
+  // Helper function to validate email format
+  const validateEmail = (email) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const obj = Object.fromEntries(formData.entries());
-    console.log(obj);
+
+    // Email validation
+    if (!validateEmail(obj.email)) {
+      setEmailError("Please enter a valid email address.");
+      return;
+    } else {
+      setEmailError("");
+    }
+
+    // Password validation
+    if (obj.password.length < 8) {
+      setPasswordError("Password must be at least 8 characters long.");
+      return;
+    } else {
+      setPasswordError("");
+    }
 
     try {
       const body = JSON.stringify(obj);
@@ -42,6 +65,9 @@ const Register = () => {
       }
     } catch (error) {
       console.error("Error sending data:", error);
+      setShowToast(true);
+      setSeverity("danger");
+      setRes("Something went wrong. Please try again.");
     } finally {
       setLoader(false);
     }
@@ -50,14 +76,14 @@ const Register = () => {
   return (
     <>
       {showToast && (
-        <Toast message={res} severity={severity} onClose={setShowToast} />
+        <Toast message={res} severity={severity} onClose={() => setShowToast(false)} />
       )}
       {loader && <Loader />}
-      {/* <div className="fixed top-0 left-0 w-screen bg-[#f2f6f8] flex flex-col justify-center h-screen">
-        <div className="w-full max-w-md mx-auto p-8 pb-4 bg-white rounded shadow-md">
-          <form ref={boxRef} onSubmit={handleSubmit}>
+      <div className="fixed top-0 left-0 w-screen bg-[#f2f6f8] flex items-center justify-center h-screen p-4">
+        <div className="w-full max-w-md mx-auto p-8 bg-white rounded-lg shadow-lg transform transition duration-500 hover:shadow-2xl">
+          <form ref={boxRef} onSubmit={handleSubmit} className="space-y-6">
             <div className="flex justify-start mb-4">
-              <b className="text-2xl">Register</b>
+              <h1 className="text-3xl font-bold text-gray-800">Register</h1>
             </div>
             <div>
               <input
@@ -65,7 +91,7 @@ const Register = () => {
                 type="text"
                 placeholder="Name*"
                 required
-                className="w-full p-2 outline-none text-sm text-gray-700 mt-5 border border-white border-b-2 border-b-black"
+                className="w-full p-3 border-b-2 border-gray-300 focus:outline-none focus:border-[#0DAFE6] text-sm text-gray-700 mt-5 transition duration-200 ease-in-out"
               />
             </div>
             <div>
@@ -74,8 +100,9 @@ const Register = () => {
                 type="email"
                 placeholder="Email*"
                 required
-                className="w-full p-2 outline-none text-sm text-gray-700 mt-5 border border-white border-b-2 border-b-black"
+                className={`w-full p-3 border-b-2 border-gray-300 focus:outline-none focus:border-[#0DAFE6] text-sm text-gray-700 mt-5 transition duration-200 ease-in-out ${emailError ? 'border-red-500' : ''}`}
               />
+              {emailError && <p className="text-red-500 text-xs mt-1">{emailError}</p>}
             </div>
             <div>
               <input
@@ -83,93 +110,35 @@ const Register = () => {
                 type="password"
                 placeholder="Password*"
                 required
-                className="w-full p-2 outline-none text-sm text-gray-700 mt-5 border border-white border-b-2 border-b-black"
+                className={`w-full p-3 border-b-2 border-gray-300 focus:outline-none focus:border-[#0DAFE6] text-sm text-gray-700 mt-5 transition duration-200 ease-in-out ${passwordError ? 'border-red-500' : ''}`}
               />
+              {passwordError && <p className="text-red-500 text-xs mt-1">{passwordError}</p>}
             </div>
-            <div className="flex justify-start mt-8">
+            <div className="flex items-center justify-start mt-4">
               <input
                 type="checkbox"
                 name="user"
                 id="user"
-                className="w-4 h-4 text-gray-700"
+                className="cursor-pointer w-4 h-4 text-[#0DAFE6] border-gray-300 focus:ring-[#0DAFE6]"
               />
-              <label className="ml-2 text-sm text-gray-700" htmlFor="user">
+              <label className="ml-2 text-sm text-gray-700 cursor-pointer" htmlFor="user">
                 Remember me
               </label>
             </div>
             <input
-              className="w-full p-2 active::text-[#0DAFE6] active:bg-[#0DAFE6] cursor-pointer bg-[#0DAFE6] hover:bg-[white] hover:text-[#0DAFE6] text-white font-bold py-2 px-4 rounded-xl mt-6"
+              className="w-full p-3 cursor-pointer bg-[#0DAFE6] hover:bg-white hover:text-[#0DAFE6] active:bg-[#0DAFE6] active:text-white text-white font-bold rounded-xl mt-6 transition duration-200 ease-in-out"
               type="submit"
               value="Register"
             />
           </form>
           <button
-            className="mt-5 active:text-blue-400"
+            className="w-full text-center mt-5 text-sm text-gray-700 hover:text-blue-400 transition duration-200"
             onClick={() => navigate("/login")}
           >
-            Login?
+            Already have an account? Login
           </button>
         </div>
-      </div> */}
-      <div className="fixed top-0 left-0 w-screen bg-[#f2f6f8] flex items-center justify-center h-screen p-4">
-  <div className="w-full max-w-md mx-auto p-8 bg-white rounded-lg shadow-lg transform transition duration-500 hover:shadow-2xl">
-    <form ref={boxRef} onSubmit={handleSubmit} className="space-y-6">
-      <div className="flex justify-start mb-4">
-        <h1 className="text-3xl font-bold text-gray-800">Register</h1>
       </div>
-      <div>
-        <input
-          name="name"
-          type="text"
-          placeholder="Name*"
-          required
-          className="w-full p-3 border-b-2 border-gray-300 focus:outline-none focus:border-[#0DAFE6] text-sm text-gray-700 mt-5 transition duration-200 ease-in-out"
-        />
-      </div>
-      <div>
-        <input
-          name="email"
-          type="email"
-          placeholder="Email*"
-          required
-          className="w-full p-3 border-b-2 border-gray-300 focus:outline-none focus:border-[#0DAFE6] text-sm text-gray-700 mt-5 transition duration-200 ease-in-out"
-        />
-      </div>
-      <div>
-        <input
-          name="password"
-          type="password"
-          placeholder="Password*"
-          required
-          className="w-full p-3 border-b-2 border-gray-300 focus:outline-none focus:border-[#0DAFE6] text-sm text-gray-700 mt-5 transition duration-200 ease-in-out"
-        />
-      </div>
-      <div className="flex items-center justify-start mt-4">
-        <input
-          type="checkbox"
-          name="user"
-          id="user"
-          className="w-4 h-4 text-[#0DAFE6] border-gray-300 focus:ring-[#0DAFE6]"
-        />
-        <label className="ml-2 text-sm text-gray-700" htmlFor="user">
-          Remember me
-        </label>
-      </div>
-      <input
-        className="w-full p-3 cursor-pointer bg-[#0DAFE6] hover:bg-white hover:text-[#0DAFE6] active:bg-[#0DAFE6] active:text-white text-white font-bold rounded-xl mt-6 transition duration-200 ease-in-out"
-        type="submit"
-        value="Register"
-      />
-    </form>
-    <button
-      className="w-full text-center mt-5 text-sm text-gray-700 hover:text-blue-400 transition duration-200"
-      onClick={() => navigate("/login")}
-    >
-      Already have an account? Login
-    </button>
-  </div>
-</div>
-
     </>
   );
 };
