@@ -5,7 +5,7 @@ import { WebHandler } from "../../data/remote/WebHandler";
 import { URLS } from "../../data/remote/URL";
 import Toast from "./Toast";
 
-const StarRating = ({ courseId, setReview }) => {
+const Rating = ({ courseId, setReview }) => {
     const [rating, setRating] = useState(0);
     const [hover, setHover] = useState(0);
     const [reviewText, setReviewText] = useState("");
@@ -88,4 +88,4 @@ const StarRating = ({ courseId, setReview }) => {
     );
 };
 
-export default StarRating;
+export default Rating;

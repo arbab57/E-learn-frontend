@@ -4,9 +4,9 @@ import { WebHandler } from "../data/remote/WebHandler";
 import { URLS } from "../data/remote/URL";
 import Loader from "../components/General/Loader";
 import PaymentCard from "../components/PaymentCard";
-import StartRating from "../components/General/StarRating"
 import Review from "../components/Review";
 import VideoPlayer from "../components/VideoPlayer";
+import Rating from "../components/General/Rating";
 
 const CoursePage = () => {
   const [course, setCourse] = useState(null);
@@ -157,7 +157,7 @@ const CoursePage = () => {
         {course && (
           <div className="mt-12">
             <h2 className="text-2xl font-bold text-gray-800">Reviews</h2>
-            {bought && <StartRating setReview={setReview} courseId={courseId} />}
+            {bought && <Rating setReview={setReview} courseId={courseId} />}
             <div className="mt-4 space-y-6">
               {course.data.reviews.map((review, index) => (
                 <Review review={review} setDelRev={setDelRev} courseId={courseId} index={index} />
