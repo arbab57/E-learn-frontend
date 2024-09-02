@@ -1,4 +1,9 @@
-import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements, } from "react-router-dom";
+import {
+  Route,
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from "react-router-dom";
 import MainPage from "./pages/mainPage";
 import Mainlayout from "./layouts/mainlayout";
 import Login from "./pages/Login";
@@ -14,10 +19,8 @@ import { Context } from "./Context/Context";
 import { useState } from "react";
 import ContactUs from "./pages/ContactUs";
 
-
 function App() {
-
-  const [courseId, setCourseId] = useState("")
+  const [courseId, setCourseId] = useState("");
 
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -37,12 +40,13 @@ function App() {
     )
   );
 
-  return <>
-    <Context.Provider value={{ courseId, setCourseId }}>
-      <RouterProvider router={router} />;
-    </Context.Provider>
-
-  </>
+  return (
+    <>
+      <Context.Provider value={{ courseId, setCourseId }}>
+        <RouterProvider router={router} />;
+      </Context.Provider>
+    </>
+  );
 }
 
 export default App;
