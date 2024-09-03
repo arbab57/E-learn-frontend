@@ -6,10 +6,10 @@ const Intro = () => {
   const navigate = useNavigate()
 
   return (
-    <div className="mt-12 flex lg:flex-row justify-around items-center flex-col-reverse  md:flex-col-reverse ">
-      <div className="text">
+    <div className="mt-12 flex lg:flex-row justify-around items-center flex-col-reverse  md:flex-col-reverse  sm:px-0 px-2">
+      <div className="lg:text-left text-center ">
         <h2 className="font-medium text-4xl">Build Skills With</h2>
-        <h2 className="font-medium text-4xl">Online Courses</h2>
+        <h2 className="font-medium text-4xl mb-2">Online Courses</h2>
         <p>We denounce with righteous indignation and dislike men who are</p>
         <p className="mb-3">so beguiled and demoralized that cannot trouble</p>
         <br></br>

@@ -72,7 +72,7 @@ const CoursePage = () => {
                 className="rounded-lg shadow-lg w-full object-cover h-64 md:h-full"
               />
             </div>
-            <div className="md:w-1/2">
+            <div className="md:w-1/2 ">
               <h1 className="text-3xl font-bold text-gray-800">
                 {course?.data?.details.title}
               </h1>
@@ -83,8 +83,8 @@ const CoursePage = () => {
               <p className="mt-6 text-xl font-semibold text-blue-600">
                 ${course?.data?.details.price}
               </p>
-              <div className="flex items-center mt-4">
-                <div className="flex items-center gap-1">
+              <div className="flex items-center mt-4 ">
+                <div className="flex items-center gap-1 ">
                   <FaStar className="text-yellow-500" />
                   <span className="font-medium">
                     {course?.data?.details.rating}
