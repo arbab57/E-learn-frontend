@@ -109,21 +109,6 @@ function Header() {
               SignOut
             </button>
           </div>
-          {/* <div className="pt-4 pb-3 border-t border-gray-200">
-            <div className="flex items-center px-5">
-              <div onClick={toggleDropDown} className="flex items-center cursor-pointer">
-                <FaUserGraduate className="text-[#0DAFE6] text-xl" />
-                <FaChevronDown className="ml-1 text-sm" />
-              </div>
-            </div>
-            {showDropDown && (
-              <DropDown
-                setPassword={setPassword}
-                setSetting={setSetting}
-                setShowDropDown={setShowDropDown}
-              />
-            )}
-          </div> */}
         </div>
       )}
 
