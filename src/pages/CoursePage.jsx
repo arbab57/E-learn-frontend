@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { WebHandler } from "../data/remote/WebHandler";
 import { URLS } from "../data/remote/URL";
@@ -7,6 +7,8 @@ import PaymentCard from "../components/PaymentCard";
 import Review from "../components/Review";
 import VideoPlayer from "../components/VideoPlayer";
 import Rating from "../components/General/Rating";
+import { Context } from "../Context/Context";
+import { useNavigate } from "react-router-dom";
 
 const CoursePage = () => {
   const [course, setCourse] = useState(null);
@@ -22,6 +24,9 @@ const CoursePage = () => {
     const id = JSON.parse(localStorage.getItem("courseId"));
     return id;
   });
+
+  const { setMentorId } = useContext(Context);
+  const navigate = useNavigate()
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -58,6 +63,12 @@ const CoursePage = () => {
     const minutes = Math.floor((duration % 3600000) / 60000);
     return `${hours}h ${minutes}m`;
   };
+
+  const mentorHandle = async (mentorId) => {
+    setMentorId(mentorId)
+    navigate("/mentor-details")
+  }
+  
 
   return (
     <>
@@ -109,12 +120,13 @@ const CoursePage = () => {
           <div className="mt-12">
             <h2 className="text-2xl font-bold text-gray-800">Mentor</h2>
             <div className="flex items-center gap-4 mt-4">
+            
               <img
                 src={course.mentor.img}
                 alt=""
                 className="w-16 h-16 rounded-full object-cover"
               />
-              <p className="text-gray-700 font-bold">{course.mentor.name}</p>
+              <p onClick={() =>mentorHandle(course.mentor.id)} className="text-gray-700 font-bold cursor-pointer">{course.mentor.name}</p>
             </div>
           </div>
         )}

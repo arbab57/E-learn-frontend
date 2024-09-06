@@ -7,9 +7,6 @@ const ReviewSection = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Name:", name);
-    console.log("Email:", email);
-    console.log("Comment:", comment);
     setName("");
     setEmail("");
     setComment("");

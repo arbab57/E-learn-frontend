@@ -18,9 +18,10 @@ import Courses from "./pages/Courses";
 import { Context } from "./Context/Context";
 import { useState } from "react";
 import ContactUs from "./pages/ContactUs";
+import MentorProfile from "./pages/MentorProfile";
 
 function App() {
-  const [courseId, setCourseId] = useState("");
+  const [mentorId, setMentorId] = useState("");
 
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -35,6 +36,7 @@ function App() {
           <Route path="/saved-courses" element={<SavedCourses />} />
           <Route path="/bought-courses" element={<BoughtCoures />} />
           <Route path="/course-details" element={<CoursePage />} />
+          <Route path="/mentor-details" element={<MentorProfile />} />
         </Route>
       </>
     )
@@ -42,7 +44,7 @@ function App() {
 
   return (
     <>
-      <Context.Provider value={{ courseId, setCourseId }}>
+      <Context.Provider value={{ mentorId, setMentorId }}>
         <RouterProvider router={router} />;
       </Context.Provider>
     </>

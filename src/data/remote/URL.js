@@ -22,5 +22,6 @@ export const URLS = {
     COURSES: BASE_URL + 'courses/search',
     ADDREVIEW: BASE_URL + 'courses/reviews/',
     DELETEREVIEW: BASE_URL + 'courses/reviews/',
-    VERIFYREVIEW: BASE_URL + 'courses/'
+    VERIFYREVIEW: BASE_URL + 'courses/',
+    GETMENTOR:  BASE_URL + 'mentors/data/'
 }
