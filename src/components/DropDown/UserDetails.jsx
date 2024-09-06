@@ -71,7 +71,7 @@ const UserDetails = ({ setSetting }) => {
   };
 
   return (
-    <div className="flex justify-center items-center w-screen fixed top-0 left-0 bg-black bg-opacity-40 h-screen">
+    <div className="flex justify-center items-center w-screen fixed top-0 left-0 bg-black bg-opacity-40 h-screen z-50">
       <div
         ref={modalRef}
         className="rounded-xl bg-white p-6 max-w-lg w-full shadow-lg"
@@ -109,7 +109,7 @@ const UserDetails = ({ setSetting }) => {
                       className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     />
                   </div>
-                  <div className="mb-4">
+                  {/* <div className="mb-4">
                     <label className="block text-gray-700 text-sm font-bold mb-2">
                       Phone Number
                     </label>
@@ -120,10 +120,10 @@ const UserDetails = ({ setSetting }) => {
                       onChange={handleChange}
                       className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     />
-                  </div>
+                  </div> */}
                   <div className="mb-4">
                     <label className="block text-gray-700 text-sm font-bold mb-2">
-                      Password (required to update details)
+                     Old Password (required to update details)
                     </label>
                     <input
                       type="password"
