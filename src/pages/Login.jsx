@@ -18,23 +18,44 @@ const Login = () => {
     const formData = new FormData(e.target);
     const obj = Object.fromEntries(formData.entries());
 
-    try {
-      setLoading(true);
-      const body = JSON.stringify(obj);
-      const { response, status } = await WebHandler(URLS.LOGIN, "POST", body);
-      if (status === 200) {
-        setIsLoggedIn(true);
-        setRes(response.message);
-      } else {
-        setShowToast(true);
-        setRes(response.message);
-      }
-    } catch (error) {
-      console.error("Error sending data:", error);
-    } finally {
-      setLoading(false);
+  //   try {
+  //     setLoading(true);
+  //     const body = JSON.stringify(obj);
+  //     const { response, status } = await WebHandler(URLS.LOGIN, "POST", body, {withCredentials: true});
+  //     if (status === 200) {
+  //       setIsLoggedIn(true);
+  //       setRes(response.message);
+  //     } else {
+  //       setShowToast(true);
+  //       setRes(response.message);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error sending data:", error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
+  try {
+    setLoading(true);
+    const body = JSON.stringify(obj);
+    
+    // Pass true for withCredentials in the WebHandler call
+    const { response, status } = await WebHandler(URLS.LOGIN, "POST", body, true);
+  
+    if (status === 200) {
+      setIsLoggedIn(true);
+      setRes(response.message);
+    } else {
+      setShowToast(true);
+      setRes(response.message);
     }
-  };
+  } catch (error) {
+    console.error("Error sending data:", error);
+  } finally {
+    setLoading(false);
+  }
+}
 
   useEffect(() => {
     if (isLoggedIn) {
