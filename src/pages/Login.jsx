@@ -21,7 +21,7 @@ const Login = () => {
     try {
       setLoading(true);
       const body = JSON.stringify(obj);
-      const { response, status } = await WebHandler(URLS.LOGIN, "POST", body, {withCredentials: true});
+      const { response, status } = await WebHandler(URLS.LOGIN, "POST", body);
       if (status === 200) {
         setIsLoggedIn(true);
         setRes(response.message);
