@@ -17,17 +17,17 @@ function Header() {
   const [showDropDown, setShowDropDown] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(`${URL}/auth/check`, {
-        credentials: "include",
-      });
-      if (response.status !== 200) {
-        navigate("/login");
-      }
-    };
-    fetchData();
-  }, [navigate]);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const response = await fetch(`${URL}/auth/check`, {
+  //       credentials: "include",
+  //     });
+  //     if (response.status !== 200) {
+  //       navigate("/login");
+  //     }
+  //   };
+  //   fetchData();
+  // }, [navigate]);
 
 
   const signOut = async () => {
